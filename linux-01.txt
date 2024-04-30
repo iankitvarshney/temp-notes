@@ -1,0 +1,308 @@
+All linux commands are valid shell script commands.
+
+REPL -> Read Evaluate Print Loop 
+These are all REPL consoles.
+
+For showing all options related to a command.
+<command> --help
+man <command>
+
+Current directory path:
+pwd
+
+For directory content:
+ls
+
+ls -l : Gives more file/folder information with permissions and owners.
+ls -a : Shows all hidden files/folders.
+ls -lh : Shows all information and size of files.
+ls -h : Nothing specific (Like ls).
+
+ls -l /etc
+It will give us the contents of /etc directory.
+
+To change directory:
+cd
+
+cd .. : Moves back one folder 
+cd ../.. : Moves back two folders 
+
+Default directory in Linux : Home directory.
+
+Home directory : /Users/<username> (MacOS)
+
+cd ~ : Represents Home directory.
+cd / : Represents Root directory (to move to the absolute root directory).
+cd : Bring us to the Home directory.
+
+~ : This refers to Home directory.
+/ : This refers to Root directory.
+
+Root directory and Home directory are different.
+Home directory is a sub-folder of Root directory.
+
+Relative path : wrt current path.
+Absolute path : wrt Home directory (~).
+
+clear : Cleans up terminal.
+
+mkdir <foldername> : Creates a new directory/folder.
+touch <filename> : Creates a new file.
+cat <filename> : Shows file content.
+
+If the content of file is really long and we have to page down, use the following.
+less file1.txt 
+To get out of it, hit "q".
+
+
+NOTE: 
+For writing content to a file using terminal, use the following commands.
+
+nano <filename>
+-> Opens up a text editor.
+-> Write the file content.
+-> Save the file using CTRL + S.
+-> Exit the text editor using CTRL + X.
+
+
+rm <filename> : Deletes a file.
+rmdir <foldername> : Deletes empty folder.
+rm -r <foldername> : Deletes non-empty folder.
+
+-r means recursive operation.
+-r firstly deletes all content of that folder.
+And then it deletes that folder itself.
+
+rm -rf <foldername> : Forceful delete operation.
+
+Avoid rm -rf as much as possible.
+
+rm -rf /
+If we run the above command by mistake, 
+it will start deleting the Root directory.
+Because / represents Root directory.
+OS will start crashing and corrupting.
+
+
+tail <filename> : Shows some last content of a file.
+tail -n 3 <filename> : Shows last 3 lines of a file.
+
+tail -f <filename> : Shows some last content of a file without exiting terminal.
+Press CTRL + C to exit.
+
+head <filename> : Shows some starting content of a file.
+head -n 10 <filename> : Shows starting 10 lines of a file.
+
+echo <message> : Prints message on the terminal.
+echo "<message>" : Prints message without quotes on the terminal.
+
+echo "<content>" > file.txt 
+Dumps <content> to given file.
+
+ls > file.txt 
+Dumps output of ls to given file.
+
+pwd > file.txt 
+Dumps output of pwd to given file.
+
+cat test.txt > file.txt 
+Dumps test.txt content to given file.
+
+
+NOTE:
+> : Replaces all of the content of a file with new content.
+>> : Appends new content to a file.
+
+ls >> file.txt 
+Appends output of ls to given file.
+
+
+Pipes/Piping:
+If we want to give the output of one command as an input to the other command, we use pipes (|).
+
+
+grep : Used for substring search.
+
+ls | grep DSA 
+Lists all files/folders with DSA in their names.
+
+ps aux
+Lists all of the processes that are running in the system.
+
+
+How many chrome processes are running in our system ?
+
+ps aux | grep chrome 
+Using this, we will get process ids and other information.
+
+
+Execution of a C++ file using terminal:
+
+g++ permutation.cpp --std=c++14 -o run 
+-> The above command will create an executable binary file with name "run".
+
+./run 
+-> Running this, the program will get executed.
+
+
+Clubbing commands:
+In Linux, we can club a bunch of commands together using &&.
+<command1> && <command2>
+
+If <command1> runs successfully, then it will run <command2>.
+Example:
+g++ permutation.cpp --std=c++14 -o run && ./run 
+
+
+cp <oldfile> <newfile>
+Copies old file content to new file.
+If new file is not already created, cp command will create it.
+
+mv <oldfile> <newfile>
+Deletes oldfile and creates newfile with the same content.
+
+NOTE:
+mv -> Cut-Paste files.
+mv -> Rename files.
+
+
+Zipping files:
+
+tar -cf archive.zip 1.txt 2.txt 
+This zips 1.txt and 2.txt into archive.zip 
+
+
+Compressing files:
+
+tar -zcf archive.zip 1.txt 2.txt 
+This compresses 1.txt and 2.txt into archive.zip 
+
+
+Showing zipped file content:
+
+tar -xvzf archive.zip 
+This shows the content of archive.zip 
+
+
+Extracting zipped files:
+
+tar -xf <archive_name> -C <folder_to_extract>
+
+tar -xf archive.zip -C extract 
+
+NOTE:
+<folder_to_extract> should be present already.
+
+
+For running shell script files:
+sh test.sh 
+
+
+
+
+
+
+Other Commands:
+
+
+"which" is used for a file or folder location and gives us that location.
+which mongod
+
+
+history
+It will basically show us last 500 executed commands.
+
+
+sudo apt -get update 
+It will ask us the password and then it will run.
+It is used for updating our packages.
+We want to use "sudo" to run as the root user.
+
+
+
+System Commands:
+
+
+ifconfig 
+
+It basically gives us all of our network information, 
+our ethernet cards, 
+our ip address, 
+local ip address, 
+our loopback and things like that.
+
+
+iwconfig
+It will show us all the wireless stuff.
+
+
+
+
+If we want to ping another machine over the ethernet or the internet.
+ping google.com 
+
+It will give us the response back continuously.
+For stopping it, use CTRL + C.
+
+
+If we want to ping something that's most likely not a domain.
+ping alskdfaldfl.com 
+
+It will give us "Unknown host"
+
+
+uname -a
+It will give us a summary of our system.
+The os, the version, things like that.
+
+
+blkid
+It basically shows us our hard drive.
+
+
+top
+This basically shows us our processes.
+how much memory and cpu the processes are taking and all.
+Kind of like the task manager in windows.
+for getting out of it, hit "q".
+
+
+df
+This will show us our available and unavailable disk space.
+
+
+lsusb
+It will show us devices like usb hubs and things like that.
+
+
+lspci 
+This is used for pci stuff.
+
+
+
+Package managers are big part of most linux distributions.
+Different distributions use different managers.
+debian, ubuntu uses "apt -get".
+
+
+sudo apt -get install <package name>
+This will install packages which are available.
+
+
+sudo apt -get remove <package name>
+This is used for removing a package.
+
+
+If we want to update or want to see the available updates for packages on our system.
+sudo apt -get update
+
+It will run through and check everything.
+If it finds something, it will let us know.
+
+
+Shut Down Command:
+
+sudo shutdown -r (to restart)
+sudo shutdown -h (hault and shut the whole thing down) 
+sudo shutdown -h 10 ( to set a time)
+sudo shutdown -h now (for shutting now )

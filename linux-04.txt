@@ -1,0 +1,91 @@
+For effective security, linux divides authorization into two levels.
+Authorization Levels:
+1. Ownership 
+2. Permission 
+
+
+Changing Ownership and Group:
+
+chown user <filename>
+It is used for changing the ownership of a file or directory.
+
+
+chown user:group <filename>
+It is used for changing user as well as group for a file or directory.
+
+user:group ===> owner name : group name
+
+
+Example:
+-> guru99 root commands
+
+
+sudo chown root commands
+-> root root commands
+
+
+sudo chown guru99:guru99 commands
+-> guru99 guru99 commands
+
+
+In case we want to change only the group owner of a file, use the following command.
+sudo chgrp root commands
+-> guru99 root commands
+
+
+NOTE:
+chgrp command stands for "change group"
+
+
+Tips on Usergroups:
+
+1.
+The file /etc/group contains all the groups defined in the system.
+
+
+2.
+We can use the command "groups" to find all the groups we are a member of.
+
+groups
+The above command will list all the groups that the current user is a member of.
+
+
+3.
+We can use the command "newgrp" to work as a member of a new group other than our default group.
+
+Example:
+-> Let us change the usergroup from the user guru99 to cdrom.
+newgrp cdrom
+
+-> Create a new file as test and put some content in it.
+cat > test
+-> This is a test file.
+
+
+ls -dl test
+-> guru99 cdrom test
+
+You can see above, the usergroup for the new file is cdrom.
+Instead of the default, guru99.
+
+
+4.
+Two groups cannot own the same file.
+The one group can be a subgroup of another, which can own a file.
+
+
+Summary:
+
+The `chown` command can change the ownership of a file/directory.
+Use the following commands:
+
+chown user file
+OR
+chown user:group file
+
+
+The `chgrp` command can change the group ownership.
+chgrp group filename
+
+
+------------------------------ Completed ----------------------------------

@@ -1,0 +1,236 @@
+Understanding File and Directory permissions:
+
+
+ls -l
+This command shows all the available files and folders with permission strings.
+
+d : It means the object is a Directory.
+- : It means the object is a File.
+l : It means the object is a Link.
+
+
+drwxr-xr-x
+
+There are total four groups.
+d       first group
+rwx     second group
+r-x     third group
+r-x     fourth group
+
+
+Example:
+drwxrwxr-x 2 jay jay 4.0K 2021-03-12 17:28 vbox 
+            user group 
+
+
+Second group:
+rwx : Permissions for the user.
+
+
+The first instance of my name is the user, so I own this Directory.
+The second instance of my name is the group that owns the file or directory (which is also my name).
+
+r -> read
+we can read the contents of that item.
+
+w -> write
+we can write the contents to that item.
+
+x -> execute
+It has two completely different meanings.
+They are similar but different.
+
+If it is a file, we can execute that file as if it were a program.
+
+If it is a directory, the x means that we can go inside the directory, 
+we can change our current working directory, and can go inside that directory.
+
+If x bit is not set, we cannot go inside that directory.
+
+
+Third group:
+rwx : These permissions pertain to the group.
+In this case, the group is also me.
+
+
+When we create a user, we get a group, not always, but a lot of distributions do that.
+and then by default, the files and folders that we create inside the home directory will be owned by you, 
+your user, as well as your group.
+
+
+For example, we have some files that we want to make readable by an entire group of users, 
+we can create a group and then we can assign that directory and those files to be owned by that group.
+
+
+For example, 
+you could have an accounting team at your company, and maybe this folder contains some very 
+confidential financial reports for your company, 
+You certainly don't want everyone to be able to see those reports, only the people that need to see 
+those reports, 
+in that case, perhaps you would create a group called accounting, you would assign the object to 
+that group and then make sure that only that group can read those files that are inside that directory.
+
+you would be able to do that because well you could create a group and then manage the permissions as you, 
+the administrator sees fit.
+
+
+Fourth group:
+
+r-x : These permissions pertain to the others (world).
+other: neither of these: ( jay jay )
+
+
+Permission string for a file:
+-rw-rw-r-- 1 jay jay 0 Mar 23 14:36 testfile.txt 
+
+In the above, x is not set anywhere.
+Absolutely, no one will be able to execute that text file as a program.
+
+
+
+
+To execute a file as if it were a program, basically a script, type the following.
+./testfile.txt
+
+We will get permission denied because x bit is not set.
+So, we don't have permission to execute this file.
+
+
+We can use this:
+bash testfile.txt
+
+In this case, we are essentially telling the bash interpreter to go ahead and just read the contents of this file and execute it.
+This will still work.
+It will give us the output.
+
+
+chmod command:
+It allows us to change the permissions on an object.
+
+
+chmod +x testfile.txt
+
+-rwxrwxr-x
+
+Now, the x bit is added to each section of the permission string.
+Because we didn't specify User, Group or World while executing the command.
+
+
+
+chmod u-x testfile.txt
+
+-rw-rwxr-x
+
+Now if we try to execute it again, it will give us permission denied.
+./testfile.txt
+
+
+chmod u+x testfile.txt
+chmod g-x testfile.txt
+chmod o-x testfile.txt
+
+-rwxrw-r--
+
+No one has the ability to execute this file other than the user.
+
+./testfile.txt
+It will give us the output this time.
+
+
+chmod g-r testfile.txt
+chmod o-r testfile.txt
+
+-rwx-w----
+
+Now, its kind of weird.
+Because group has the ability to write to the file, they can't read it, they can't execute it,
+but they can change it.
+
+
+chmod g-w testfile.txt
+
+-rwx------
+
+Now, nobody other than user has access to this particular file.
+Nobody can read, write and execute it other than user.
+
+
+NOTE: 
+>> : it appends the content to the end of the file.
+> : it will replace the file content with the given content.
+
+
+chmod u-w testfile.txt
+
+echo "LearnLinuxTV" >> testfile.txt
+(This command will give us permission denied)
+
+
+chmod u+w testfile.txt
+
+echo "LearnLinuxTV" >> testfile.txt
+cat testfile.txt 
+
+This time, it will run the command and will show us the new updated content of the file.
+
+
+
+
+Combining the chmod command:
+
+
+chmod g+rw testfile.txt
+
+-rwxrw----
+
+
+
+
+Bit scores for each value:
+There is a numerical representation of read write and execute.
+Each permission bit has a specific number attached to it.
+
+r -> read has a value of 4
+w -> write has a value of 2
+x -> execute has a value of 1
+
+r=4 w=2 x=1
+
+
+chmod 770 testfile.txt
+
+-rwxrwx---
+
+rwx for user.
+rwx for group.
+nothing for other.
+
+
+When we use the chmod command with numerical values, we have three digits here that we can use.
+And then we have the name of the file.
+
+first digit : user
+second digit : group
+third digit : other
+
+
+7 is the highest it can possibly ever get.
+Each position here can never be higher than that.
+
+7 => (4 + 2 + 1)
+
+
+chmod 750 testfile.txt
+
+-rwxr-x---
+
+
+chmod 725 testfile.txt
+
+-rwx-w-r-x
+
+
+
+
+Completed till 27:15
+
