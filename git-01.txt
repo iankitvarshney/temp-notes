@@ -30,16 +30,18 @@ How to revert from one stage to another (working area, staging area, commit area
 Revert changes from Staging Area to Working Directory:
 If you've staged changes but want to revert them back to your working directory (unstaged), you can use:
 git reset HEAD <file>
+git rm --cached <file>
+git restore --staged <file>
 This command will unstage the changes for the specified file(s) and move them back to the working directory.
 
 Revert changes from Commit Area to Staging Area:
 If you've committed changes but haven't pushed them to a remote repository yet, and you want to undo the commit and move the changes back to the staging area, you can use:
-git reset --soft HEAD^
+git reset --soft HEAD~
 This command will undo the last commit while keeping the changes in your working directory and staging area.
 
 Revert changes from Commit Area to Working Directory:
 If you've committed changes and want to completely remove them from both the commit area and the staging area, reverting them back to your working directory, you can use:
-git reset --hard HEAD^
+git reset --hard HEAD~
 This command will completely remove the last commit, including its changes, from your local repository.
 Use it with caution, as it will discard all changes made in the last commit.
 
