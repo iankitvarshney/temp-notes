@@ -1,0 +1,87 @@
+grep command:
+
+
+grep stands for Global Regular Expression Print.
+grep command is used to search for text within files.
+
+
+cat /etc/ssh/sshd_config | wc -l
+-> 33
+
+This command prints the number of lines present in that file.
+
+
+cat /etc/ssh/sshd_config | grep Port
+-> Port 22
+
+This command will print every line that contains the word "Port".
+
+
+For most of the commands in Linux, -v means verbose.
+In case of grep command, -v means something else.
+
+
+cat /etc/ssh/sshd_config | grep -v Port
+
+This command will print every line that did not contain the word "Port".
+
+
+grep Port /etc/ssh/sshd_config
+-> Port 22
+
+This command will print every line that contains the word "Port".
+grep command is able to search within files by itself.
+
+
+grep Turtle characters.txt
+
+This command will print all lines that contains the word "Turtle".
+
+
+grep -v Human characters.txt
+
+This command will print all lines that does not contains the word "Turtle".
+
+
+grep -n Human characters.txt
+
+This command will also print line numbers with each line which contains the word "Human".
+
+
+grep -c Human characters.txt
+
+This command gives us the count the number of times the given word appears in the file.
+But it doesn't show the line themselves.
+
+
+NOTE:
+By default, grep is actually case-sensitive.
+
+
+grep -i human characters.txt
+
+This command will not care about the case-sensitivity.
+
+
+grep gedit *
+
+* means it will look through every file.
+
+
+grep -n gedit *
+
+This command will also show us the line numbers.
+
+
+grep -r gedit git/personal/ansible/roles/
+
+This command allows us to recursively search through files even through directories to find our match.
+In this command, we give the path where we want to start the search from.
+
+
+grep -ri Error /var/log
+
+This command will also search recursively with case-insensitive.
+
+
+------------------------------------- Completed ----------------------------------

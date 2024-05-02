@@ -1,0 +1,63 @@
+echo command:
+
+
+echo "Hello World"
+-> Hello World
+
+
+msg="Hello World"
+echo $msg
+-> Hello World
+
+
+echo $HOME
+-> /home/jay
+
+This command prints the location of the home directory for my user.
+
+
+echo -e "\aHello World"
+-> Hello World
+
+This command will create an audio for the message.
+
+
+echo -e "This is a\bLinux server."
+-> This is Linux server.
+
+'\b' represents backspace.
+
+
+echo -e "This is a Linux\c server."
+-> This is a Linux
+
+This command is going to truncate anything that comes after '\c'.
+This will also abandon a newline character.
+
+
+echo -e "This is a Linux\n server."
+-> This is a Linux
+->  server.
+
+
+echo -e "This is a\n Linux\n server."
+-> This is a
+->  Linux
+->  server.
+
+
+echo -e "This is a\t Linux\t server."
+-> This is a    Linux   server.
+
+\t represents tab character.
+
+
+echo "Logfile started: $(date + '%D %T')" > log.txt
+-> Logfile started: 02/22/22 15:40:33
+
+
+date + '%D %T'
+-> 02/22/22 15:41:01
+
+
+---------------------------------------- Completed -------------------------------------

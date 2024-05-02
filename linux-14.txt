@@ -1,0 +1,96 @@
+sort command:
+We can sort the data of the file by using the sort command.
+
+
+sort <filename>
+
+Here, sorting is based on alphabetical order.
+
+
+For reverse sorting, use the following command.
+
+sort -r <filename>
+
+
+If the file contains alphanumeric data, then first numbers will be considered and then
+alphabet symbols.
+
+
+If the file contains only numbers, then the sorting is not based on numeric value and it is just based on digits.
+
+$ sort a.txt
+11
+2
+2222222
+7
+9
+
+
+If we want to sort based on numeric value then we have to use -n option.
+-n means numeric value
+
+$ sort -n a.txt
+2
+7
+9
+11
+2222222
+
+
+Bydefault sort command will display duplicate lines. If we want only unique lines then we have to use -u option.
+-u meant for unique lines.
+
+$ sort a.txt
+1
+1
+2
+2
+Bunny
+Sunny
+Sunny
+
+$ sort -u a.txt
+1
+2
+Bunny
+Sunny
+
+
+Note: We can use -ur and -un options also.
+
+
+Without using -r option with sort command, sort the content based on reverse of
+alphabetical order and store the result inside sorted.txt?
+
+sort a.txt | tac > sorted.txt
+sort -r a.txt > sorted.txt
+
+To remove duplicate lines also:
+
+sort -u a.txt | tac > sorted.txt
+sort -ru a.txt > sorted.txt
+
+
+-k means KEYDEF (key definition).
+Based on which key (column) we have to sort.
+
+
+Sort based on File Size in ascending Order:
+$ ls -l /etc | head -10 | sort -k 5n
+
+5n means 5th column.
+
+
+Sort based on Month:
+6th column provides total date.
+If we want to consider only month then we should use M.
+$ ls -l /etc | head -10 |sort -k 6M
+
+
+Sort based on Number of Links in descending Order:
+$ ls -l /etc | head -10 |sort -k 2nr
+
+2nr means 2n for 2nd column and r means reverse.
+
+
+------------------------------ Completed ----------------------------------

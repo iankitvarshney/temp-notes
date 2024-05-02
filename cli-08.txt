@@ -1,0 +1,37 @@
+Questions:
+
+
+
+What is the difference between service and application?
+
+In summary, the main difference between a service and an application lies in their intended purpose and usage.
+Services typically run in the background and provide functionality or perform tasks for other software components or users, while applications are interactive programs designed for end-users to accomplish specific tasks or functions.
+However, it's worth noting that the lines between services and applications can sometimes blur, especially in complex software systems where components may serve both purposes.
+
+
+Why do we use kill -9 in general?
+The -9 option, also known as SIGKILL, is a special signal sent to a process to force it to terminate immediately.
+
+
+What are these wildcards ~, ., .., * and ??
+
+~ (Tilde):
+The tilde represents the home directory of a user.
+
+. (Dot):
+The dot represents the current directory.
+
+.. (Double dot):
+The double dot represents the parent directory.
+
+* (Asterisk):
+The asterisk is a wildcard character representing zero or more characters in filename matching.
+
+? (Question Mark):
+The question mark is a wildcard character representing a single character in filename matching.
+For example, file?.txt matches files like "file1.txt", "fileA.txt", etc.
+
+
+
+
+----------------------------------- Completed ----------------------------------

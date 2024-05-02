@@ -1,0 +1,76 @@
+Actions that you should be able to perform:
+
+
+
+Create/Read/Update/Delete/Move files and folders from command line
+
+
+check disk status:
+df
+free
+
+
+Check status of processes, able to extract process ids ( hint: use pipe operator to combine ps, xargs and awk)
+
+
+Getting the most senior parent process
+
+
+Difference between absolute and relative paths:
+
+Absolute Path:
+An absolute path specifies the exact location of a file or directory from the root directory (/) of the file system.
+It does not depend on the current working directory.
+
+Relative Path:
+A relative path specifies the location of a file or directory relative to the current working directory.
+It depends on the context of the current working directory.
+
+
+Learn ls with the 5 most commonly used flags
+
+View hidden files:
+ls -a
+
+sort by time:
+ls -ltr
+ls -lh | sort -k 6n
+
+Reverse sort:
+ls -lt
+ls | sort -r
+OR
+ls -lh | sed '1d' | sort -k 9nr (not working)
+
+Human readable file sizes:
+ls -lh
+
+Combining flags to get hidden files, sorted by time in reverse with human readable file sizes.
+ls -laht
+ls -alh | sort -k 8nr
+
+
+Find out what are terminal control codes such as Ctrl + D, Ctrl + C, Ctrl + Z etc and use them
+
+Ctrl + D:
+
+In most Unix-like systems, including Linux and macOS, pressing Ctrl + D in a terminal is not considered a terminal control code or escape sequence.
+Instead, it is a keyboard shortcut that sends an "end-of-file" (EOF) character to the terminal.
+
+Ctrl + C:
+Ctrl + C in a terminal sends a "break" signal to the foreground process running in that terminal. 
+
+Ctrl + Z:
+Ctrl + Z in a terminal sends a "suspend" signal to the foreground process running in that terminal.
+
+
+Find out how to use Ctrl + R to reverse search:
+Start by pressing Ctrl + R.
+Type what you are searching.
+press enter to execute the command.
+To cancel the reverse search and return to the regular command prompt without executing any command, you can press Ctrl + G.
+
+
+
+
+---------------------------------------- Completed ---------------------------------------

@@ -1,0 +1,55 @@
+cli commands (for review):
+
+
+
+cp with recursive flag:
+
+cp -r <source_directory> <destination_directory>
+
+If the destination_directory does not exist, it will be created.
+
+
+ls with different flags:
+
+ls -l
+long listing format
+
+ls -a
+all files
+
+ls -lh
+-h: human readable sizes
+
+ls -lt
+-t: sort by modification time
+
+ls -lr
+-r: reverse order
+
+ls -R
+Lists subdirectories recursively.
+
+
+rsync:
+The rsync command is a powerful tool for efficiently transferring and synchronizing files and directories between two locations, either locally or over a network.
+
+rsync [options] source destination
+
+Copying files from a local directory to another local directory:
+rsync -av /path/to/source/ /path/to/destination/
+
+
+wc:
+The wc command in Linux is used to display the number of lines, words, and bytes in a file or standard input.
+
+wc [options] [file(s)]
+
+-l, --lines
+-w, --words
+-c, --bytes
+-m, --chars
+
+
+
+
+--------------------------------- Completed ---------------------------

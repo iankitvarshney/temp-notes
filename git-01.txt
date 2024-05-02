@@ -1,0 +1,141 @@
+How to setup your config details like email and username globally on your system?
+
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+
+
+What are the different stages in git?
+
+Untracked:
+When a file is in the untracked stage, Git is not currently tracking changes to it.
+These are typically new files that haven't been added to the repository yet.
+
+Unmodified:
+After you've added a file to Git, but there have been no changes made to it since the last commit, it's in the unmodified stage.
+
+Modified:
+When changes are made to a file that is already tracked by Git, but those changes haven't been staged yet, the file is in the modified stage.
+
+Staged:
+In Git, before changes are committed to the repository, they need to be staged.
+Staging essentially prepares changes for the next commit. When you add changes to the staging area using git add, the files are in the staged stage.
+
+Committed:
+When you run git commit, Git takes the changes that are staged and permanently stores them in the repository as a new commit.
+Once committed, the files are in the committed stage.
+
+
+How to revert from one stage to another (working area, staging area, commit area)?
+
+Revert changes from Staging Area to Working Directory:
+If you've staged changes but want to revert them back to your working directory (unstaged), you can use:
+git reset HEAD <file>
+This command will unstage the changes for the specified file(s) and move them back to the working directory.
+
+Revert changes from Commit Area to Staging Area:
+If you've committed changes but haven't pushed them to a remote repository yet, and you want to undo the commit and move the changes back to the staging area, you can use:
+git reset --soft HEAD^
+This command will undo the last commit while keeping the changes in your working directory and staging area.
+
+Revert changes from Commit Area to Working Directory:
+If you've committed changes and want to completely remove them from both the commit area and the staging area, reverting them back to your working directory, you can use:
+git reset --hard HEAD^
+This command will completely remove the last commit, including its changes, from your local repository.
+Use it with caution, as it will discard all changes made in the last commit.
+
+
+What is a branch?
+
+In Git, a branch is essentially a lightweight movable pointer to one of the commits.
+The default branch in Git is typically called "master" (although "main" is becoming more common as a default branch name).
+When you create a new branch, it essentially creates a new pointer to the same commit you're currently on.
+This allows you to diverge from the main line of development and work on new features, bug fixes, or experiments without affecting the main branch.
+
+Create a new branch:
+git branch <branchname>
+
+Move to a different branch:
+git checkout <branchname>
+
+
+How to add origin?
+git remote add origin <repository_URL>
+
+git push -u origin <branch_name>
+The -u option sets the upstream branch, linking your local branch with the corresponding branch on the remote repository, so you can simply use git push in the future without specifying the remote and branch.
+
+
+How to remove origin?
+git remote remove origin
+
+git remote -v
+This command will list all the remotes associated with your repository.
+
+
+What is git pull?
+
+git pull <remote_name> <branch_name>
+git pull origin main
+
+git pull is a Git command used to fetch and merge changes from a remote repository into your current branch.
+It combines two separate actions: git fetch and git merge.
+
+Fetch:
+It retrieves the latest changes (commits, branches, etc.) from the remote repository specified by your configured remote (typically named "origin") and stores them in your local repository.
+This doesn't merge any changes into your working branch; it only updates your local copy of the remote branches.
+
+Merge:
+After fetching the changes, git pull automatically merges the fetched commits into your current working branch.
+If there are no conflicts between your local changes and the changes fetched from the remote repository, Git will perform a fast-forward merge, which simply moves your local branch pointer forward to incorporate the new commits.
+If there are conflicts, Git will prompt you to resolve them manually.
+Once conflicts are resolved, you can complete the merge by committing the changes.
+
+
+What is git stash?
+
+git stash is a Git command used to temporarily store changes in your working directory that are not yet ready to be committed.
+It allows you to save your work without committing it to your Git history, which can be useful when you need to switch to another task or branch, but you're not ready to commit your changes.
+
+When you run git stash, Git will:
+
+Stash Changes:
+Git saves the modifications in your working directory and staging area (if any) to a stack of stashes.
+These changes are no longer present in your working directory, effectively reverting it to the state of the last commit.
+
+Clean Working Directory:
+After stashing, your working directory becomes clean, as if you hadn't made any changes since the last commit.
+
+You can later retrieve your stashed changes using git stash apply or git stash pop.
+
+git stash apply:
+It retrieves the most recent stash from the stack and applies it to your working directory without removing it from the stack.
+
+git stash pop:
+It retrieves the most recent stash from the stack, applies it to your working directory, and removes it from the stack.
+
+You can also have multiple stashes saved, and you can specify which one to apply or pop by referencing its index.
+
+
+git rebase:
+
+git rebase is a Git command used to change the base of a branch, effectively moving or incorporating the changes of one branch onto another branch.
+
+The primary use case for git rebase is to integrate changes from one branch onto another branch in a cleaner, more linear history than what you would get with a traditional merge commit.
+This is often done to maintain a clean, linear history, especially in collaboration scenarios.
+
+Here's a basic overview of how git rebase works:
+
+Choose a Branch:
+You start by checking out the branch you want to rebase onto.
+This is typically the branch you want to incorporate changes into.
+git checkout <target_branch>
+
+Start the Rebase:
+Then, you initiate the rebase command with the branch you want to rebase onto.
+This command will take the commits from the other branch and apply them one by one on top of the current branch.
+git rebase <source_branch>
+
+
+
+
+------------------------------- Completed ----------------------------

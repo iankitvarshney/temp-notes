@@ -1,0 +1,15 @@
+sudo command:
+
+sudo means Super User Do.
+We can use sudo command to execute commands as another user, mostly root user.
+
+Example:
+sudo adduser durga2
+We are executing adduser command as root.
+
+Example:
+sudo -u durga1 command
+We are using executing the command as durga1 user.
+
+sudo 274
+apt 293

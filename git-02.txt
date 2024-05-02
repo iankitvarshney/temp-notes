@@ -1,0 +1,454 @@
+anky@ubuntu:~/Desktop$ mkdir git_exercise
+anky@ubuntu:~/Desktop$ cd git_exercise/
+anky@ubuntu:~/Desktop/git_exercise$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/anky/Desktop/git_exercise/.git/
+anky@ubuntu:~/Desktop/git_exercise$ touch one.py
+anky@ubuntu:~/Desktop/git_exercise$ nano one.py
+anky@ubuntu:~/Desktop/git_exercise$ cat one.py
+print('one')
+x = [1, 2, 3]
+y = [4, 5, 6]
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git commit -m "Initial message"
+[master (root-commit) 6177331] Initial message
+ 1 file changed, 3 insertions(+)
+ create mode 100644 one.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+* master
+anky@ubuntu:~/Desktop/git_exercise$ touch two.py
+anky@ubuntu:~/Desktop/git_exercise$ nano two.py
+anky@ubuntu:~/Desktop/git_exercise$ cat two.py
+print("two")
+anky@ubuntu:~/Desktop/git_exercise$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	two.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+anky@ubuntu:~/Desktop/git_exercise$ git branch feature-2
+anky@ubuntu:~/Desktop/git_exercise$ git checkout feature-2
+Switched to branch 'feature-2'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+* feature-2
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git commit -m "Added two.py file"
+[feature-2 6da0a1d] Added two.py file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 two.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+* feature-2
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git checkout master
+Switched to branch 'master'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git merge feature-2 -m "Merged feature-2 branch with master branch"
+Updating 6177331..6da0a1d
+Fast-forward (no commit created; -m option ignored)
+ two.py | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 two.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch feature-3
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git checkout feature-3
+Switched to branch 'feature-3'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+* feature-3
+  master
+anky@ubuntu:~/Desktop/git_exercise$ touch three.py
+anky@ubuntu:~/Desktop/git_exercise$ nano three.py
+anky@ubuntu:~/Desktop/git_exercise$ cat three.py
+print("three")
+anky@ubuntu:~/Desktop/git_exercise$ touch README.md
+anky@ubuntu:~/Desktop/git_exercise$ nano README.md
+anky@ubuntu:~/Desktop/git_exercise$ cat README.md 
+## Hello, world!
+
+To run `feature-3`, execute `python3 three.py`
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+* feature-3
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git commit -m "Added three.py and README.md files"
+[feature-3 8aa16c5] Added three.py and README.md files
+ 2 files changed, 4 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 three.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+* feature-3
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git checkout master
+Switched to branch 'master'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git branch feature-4
+anky@ubuntu:~/Desktop/git_exercise$ git checkout feature-4
+Switched to branch 'feature-4'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+* feature-4
+  master
+anky@ubuntu:~/Desktop/git_exercise$ touch four.py
+anky@ubuntu:~/Desktop/git_exercise$ nano four.py
+anky@ubuntu:~/Desktop/git_exercise$ cat four.py
+print("four")
+anky@ubuntu:~/Desktop/git_exercise$ ls
+four.py  one.py  two.py
+anky@ubuntu:~/Desktop/git_exercise$ touch README.md
+anky@ubuntu:~/Desktop/git_exercise$ nano README.md 
+anky@ubuntu:~/Desktop/git_exercise$ cat README.md 
+## Hello, world!
+
+To run `feature-4`, execute `python3 three.py`
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+* feature-4
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git commit -m "Added four.py and README.md files"
+[feature-4 2d5df94] Added four.py and README.md files
+ 2 files changed, 4 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 four.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+* feature-4
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git checkout master
+Switched to branch 'master'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git merge feature-3 -m "Merged feature-3 branch with master branch"
+Updating 6da0a1d..8aa16c5
+Fast-forward (no commit created; -m option ignored)
+ README.md | 3 +++
+ three.py  | 1 +
+ 2 files changed, 4 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 three.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git merge feature-4 -m "Merged feature-4 branch with master branch"
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+anky@ubuntu:~/Desktop/git_exercise$ ls
+four.py  one.py  README.md  three.py  two.py
+anky@ubuntu:~/Desktop/git_exercise$ nano README.md 
+anky@ubuntu:~/Desktop/git_exercise$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	new file:   four.py
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both added:      README.md
+
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git status
+On branch master
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+	modified:   README.md
+	new file:   four.py
+
+anky@ubuntu:~/Desktop/git_exercise$ git commit -m "Merge conflict resolved"
+[master e9123e2] Merge conflict resolved
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git branch feature-5
+anky@ubuntu:~/Desktop/git_exercise$ git checkout feature-5
+Switched to branch 'feature-5'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+* feature-5
+  master
+anky@ubuntu:~/Desktop/git_exercise$ touch five.py
+anky@ubuntu:~/Desktop/git_exercise$ nano five.py
+anky@ubuntu:~/Desktop/git_exercise$ ls
+five.py  four.py  one.py  README.md  three.py  two.py
+anky@ubuntu:~/Desktop/git_exercise$ nano README.md 
+anky@ubuntu:~/Desktop/git_exercise$ cat README.md 
+## Hello, world!
+
+To run `feature-3`, execute `python3 three.py`
+To run `feature-4`, execute `python3 four.py`
+To run `feature-5`, execute `python3 five.py`
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git commit -m "Added five.py and updated README.md file"
+[feature-5 0e34cf3] Added five.py and updated README.md file
+ 2 files changed, 2 insertions(+)
+ create mode 100644 five.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+* feature-5
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git checkout master
+Switched to branch 'master'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git branch feature-6
+anky@ubuntu:~/Desktop/git_exercise$ git checkout feature-6
+Switched to branch 'feature-6'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+* feature-6
+  master
+anky@ubuntu:~/Desktop/git_exercise$ touch six.py
+anky@ubuntu:~/Desktop/git_exercise$ nano six.py
+anky@ubuntu:~/Desktop/git_exercise$ cat six.py
+print("six")
+anky@ubuntu:~/Desktop/git_exercise$ ls
+four.py  one.py  README.md  six.py  three.py  two.py
+anky@ubuntu:~/Desktop/git_exercise$ nano README.md 
+anky@ubuntu:~/Desktop/git_exercise$ cat README.md 
+## Hello, world!
+
+To run `feature-3`, execute `python3 three.py`
+To run `feature-4`, execute `python3 four.py`
+To run `feature-6`, execute `python3 six.py`
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+* feature-6
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git commit -m "Added six.py and updated README.md file"
+[feature-6 9641000] Added six.py and updated README.md file
+ 2 files changed, 2 insertions(+)
+ create mode 100644 six.py
+anky@ubuntu:~/Desktop/git_exercise$ git checkout master
+Switched to branch 'master'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+  feature-6
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git merge feature-5 -m "Merged feature-5 branch with master branch"
+Updating e9123e2..0e34cf3
+Fast-forward (no commit created; -m option ignored)
+ README.md | 1 +
+ five.py   | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 five.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+  feature-6
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git checkout feature-6
+Switched to branch 'feature-6'
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+* feature-6
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git rebase master
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+error: could not apply 9641000... Added six.py and updated README.md file
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 9641000... Added six.py and updated README.md file
+anky@ubuntu:~/Desktop/git_exercise$ nano README.md 
+anky@ubuntu:~/Desktop/git_exercise$ cat README.md 
+## Hello, world!
+
+To run `feature-3`, execute `python3 three.py`
+To run `feature-4`, execute `python3 four.py`
+To run `feature-5`, execute `python3 five.py`
+To run `feature-6`, execute `python3 six.py`
+anky@ubuntu:~/Desktop/git_exercise$ git status
+interactive rebase in progress; onto 0e34cf3
+Last command done (1 command done):
+   pick 9641000 Added six.py and updated README.md file
+No commands remaining.
+You are currently rebasing branch 'feature-6' on '0e34cf3'.
+  (fix conflicts and then run "git rebase --continue")
+  (use "git rebase --skip" to skip this patch)
+  (use "git rebase --abort" to check out the original branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   six.py
+
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+	both modified:   README.md
+
+anky@ubuntu:~/Desktop/git_exercise$ git rebase --continue
+README.md: needs merge
+You must edit all merge conflicts and then
+mark them as resolved using git add
+anky@ubuntu:~/Desktop/git_exercise$ git status
+interactive rebase in progress; onto 0e34cf3
+Last command done (1 command done):
+   pick 9641000 Added six.py and updated README.md file
+No commands remaining.
+You are currently rebasing branch 'feature-6' on '0e34cf3'.
+  (fix conflicts and then run "git rebase --continue")
+  (use "git rebase --skip" to skip this patch)
+  (use "git rebase --abort" to check out the original branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   six.py
+
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+	both modified:   README.md
+
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+* (no branch, rebasing feature-6)
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+  feature-6
+  master
+anky@ubuntu:~/Desktop/git_exercise$ git status
+interactive rebase in progress; onto 0e34cf3
+Last command done (1 command done):
+   pick 9641000 Added six.py and updated README.md file
+No commands remaining.
+You are currently rebasing branch 'feature-6' on '0e34cf3'.
+  (fix conflicts and then run "git rebase --continue")
+  (use "git rebase --skip" to skip this patch)
+  (use "git rebase --abort" to check out the original branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   six.py
+
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+	both modified:   README.md
+
+anky@ubuntu:~/Desktop/git_exercise$ git rebase --continue
+README.md: needs merge
+You must edit all merge conflicts and then
+mark them as resolved using git add
+anky@ubuntu:~/Desktop/git_exercise$ git add .
+anky@ubuntu:~/Desktop/git_exercise$ git status
+interactive rebase in progress; onto 0e34cf3
+Last command done (1 command done):
+   pick 9641000 Added six.py and updated README.md file
+No commands remaining.
+You are currently rebasing branch 'feature-6' on '0e34cf3'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   README.md
+	new file:   six.py
+
+anky@ubuntu:~/Desktop/git_exercise$ git rebase --continue
+[detached HEAD 71426f5] Merge conflict resolved
+ 2 files changed, 2 insertions(+)
+ create mode 100644 six.py
+Successfully rebased and updated refs/heads/feature-6.
+anky@ubuntu:~/Desktop/git_exercise$ git status
+On branch feature-6
+nothing to commit, working tree clean
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+* feature-6
+  master
+anky@ubuntu:~/Desktop/git_exercise$ ls
+five.py  four.py  one.py  README.md  six.py  three.py  two.py
+anky@ubuntu:~/Desktop/git_exercise$ git checkout master
+Switched to branch 'master'
+anky@ubuntu:~/Desktop/git_exercise$ ls
+five.py  four.py  one.py  README.md  three.py  two.py
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+  feature-6
+* master
+anky@ubuntu:~/Desktop/git_exercise$ git merge feature-6 -m "Merged feature-6 branch with master branch"
+Updating 0e34cf3..71426f5
+Fast-forward (no commit created; -m option ignored)
+ README.md | 1 +
+ six.py    | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 six.py
+anky@ubuntu:~/Desktop/git_exercise$ git status
+On branch master
+nothing to commit, working tree clean
+anky@ubuntu:~/Desktop/git_exercise$ git branch
+  feature-2
+  feature-3
+  feature-4
+  feature-5
+  feature-6
+* master
+anky@ubuntu:~/Desktop/git_exercise$ ^C
+anky@ubuntu:~/Desktop/git_exercise$ 

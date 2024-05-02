@@ -1,0 +1,59 @@
+OS/Process related commands:
+
+
+
+ps:
+The ps command in Linux is used to display information about currently running processes.
+It provides a snapshot of the processes running on the system at the time it is executed.
+
+-a, --all: Display information about all processes.
+-u, --user: Display information about processes owned by a specific user.
+-aux: Display information about all processes in a more detailed format.
+
+
+top:
+The top command provides real-time information about system resource usage, including CPU, memory, and swap usage, as well as information about running processes.
+
+
+df:
+It is used to display disk space usage information for file systems.
+
+
+uname:
+
+The uname command in Linux is used to print system information about the current operating system.
+It can provide various details such as the operating system name, kernel version, machine architecture, and more.
+
+uname
+-> Linux
+
+uname -a
+-a, --all : print all available information.
+
+
+free:
+The free command in Linux is used to display information about the system's memory usage, including both physical and swap memory.
+It provides information about total, used, free, and shared memory, as well as buffers and cache.
+
+free
+
+free -h
+-h, --human : print sizes in human readable format.
+
+
+lspci:
+The lspci command in Linux is used to display information about all PCI buses and devices connected to them.
+
+
+kill:
+The kill command in Linux is used to terminate or send signals to processes.
+
+kill <pid>
+
+kill -9 <pid>
+used for forceful termination.
+
+
+
+
+----------------------------- Completed ----------------------------

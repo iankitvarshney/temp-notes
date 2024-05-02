@@ -1,0 +1,101 @@
+sed command:
+
+sed : stream editor
+
+Used to filter and modify text.
+
+cat toppings.txt
+
+Pizza topping combos:
+1. Spinach, Pepperoni, Pineapple
+2. Pepperoni, Pineapple, Mushrooms
+3. Bacon, Banana Peppers, Pineapple
+4. Cheese, Pineapple
+
+sed 's/Pineapple/Feta/' toppings.txt
+This command will change "Pineapple" to "Feta".
+This command will give us changed output.
+This will not modify the file.
+
+
+We can do this for changing the file.
+sed 's/Pineapple/Feta/' toppings.txt > toppings.txt 
+
+
+-i allows us to change things in place.
+
+sed -i 's/Pineapple/Feta/' toppings.txt 
+
+This command will not give any output.
+This command will actually modify the file.
+
+
+Delimiter:
+
+sed 's/Feta/Olives/' toppings.txt
+
+This command will change every occurence of Feta to Olives.
+The character that follows 's' is the delimiter.
+In this command, the delimiter is '/'.
+
+
+sed 's Feta Olives ' toppings.txt
+
+We changed every occurence of '/' with ' ' (space).
+This will also work fine.
+
+
+sed 's|Feta|Olives|' toppings.txt
+
+We changed every occurence of '/' with '|'.
+This will also work fine.
+
+
+sed 's.Feta.Olives.' toppings.txt
+
+We changed every occurence of '/' with '.'.
+This will also work fine.
+
+
+So, it doesn't really matter what we use as a delimiter.
+'/' is the most common delimiter.
+
+
+If one of the character that we want to replace is a '/'.
+In this case, it will be a lot easier to use a different delimiter.
+
+
+find /etc -type f > paths.txt
+cat paths.txt
+
+Now, we want to remove '/etc' from paths.txt
+
+
+sed 's//etc//' paths.txt
+
+We want to replace '/etc' with nothing.
+This command will not work.
+
+
+sed 's/Feta//' toppings.txt
+
+This command will replace Feta with nothing.
+
+
+sed 's./etc..' paths.txt
+
+This command will work.
+It will replace '/etc' with nothing.
+
+
+sed 's./etc.stuff.' paths.txt
+
+This command will work.
+It will replace '/etc' with 'stuff'.
+
+
+echo "hello" | sed 's/hello/goodbye/'
+-> goodbye
+
+
+----------------------------------------- Completed ---------------------------------

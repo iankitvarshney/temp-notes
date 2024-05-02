@@ -1,0 +1,25 @@
+find command:
+
+find /home/jay -name *.txt
+It will list all files ending with .txt in the given directory.
+It will also find all files which are present in sub-directories of the given directory.
+
+
+find /home/jay -name *.txt | grep -v .cache
+It will not list files which are inside .cache directory.
+
+
+Current Directory Structure:
+Documents (folder)
+    -> Documents (file)
+
+
+find . -name Documents
+It will list all files and folders with name "Documents" inside the current directory.
+It will list both Documents (folder) and Documents (file) which are shown above.
+
+
+NOTE:
+. : Used to use the current directory as the given directory.
+
+

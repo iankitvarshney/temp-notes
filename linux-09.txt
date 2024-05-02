@@ -1,0 +1,72 @@
+ps command:
+
+
+The ps command allows us to see what's actually running on our server, the processes that are running on our server.
+
+
+ps
+
+This command shows the processes that are running in the current terminal session.
+This command will show us four columns.
+PID, TTY, TIME, CMD
+
+PID : Process Id
+TTY : Refers to the Terminal that the process is running inside of.
+TIME : Refers to CPU time, how much time the process has been utilizing the CPU.
+CMD : Command, the actual command that is running as part of that process.
+
+Each line is a process.
+No two processes can have the same PID.
+
+bash is a shell that runs inside a terminal.
+
+
+There are different styles of options with the ps command.
+1. Unix style options:
+It includes '-' in front of the options and then we can chain other options together.
+'aux' is actually three different options, a, u and x.
+
+2. BSD style options:
+With this style, there is no '-'.
+
+3. GNU style options:
+ps --quick-pid <pid>
+
+Example:
+ps --quick-pid 2925
+
+This command will just show us the one process represented by the given pid.
+
+
+NOTE:
+The output from these various options might show differently depending on the distribution we are running.
+
+
+ps x
+
+This command will shows all the processes that are running as my user.
+If a process was started as part of a specific terminal, it will show that terminal.
+If a process was started by the system, it will show a '?'.
+
+
+ps -He
+
+This command will show us a process hierarchy.
+This helps to see the process relationship.
+The 'e' option tells ps to list all the processes that are running on the system regardless of the controlling terminal.
+The 'H' option formats the command column to display the parent child relationship between the processes.
+
+
+ps -axjf
+
+This command will also show us the process relationships in an easy way.
+It will also show us PPID and PID.
+
+
+ps aux
+
+This command shows the USER for each of the processes.
+This command also shows the CPU % and MEM % that is being used by each process.
+
+
+------------------------------------- Completed --------------------------------

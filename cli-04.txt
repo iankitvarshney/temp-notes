@@ -1,0 +1,26 @@
+Network related commands:
+
+
+
+ping:
+The ping command in Linux is used to send ICMP echo request packets to a specified network host and measure the round-trip time for the packets to reach the host and come back.
+It's commonly used to test network connectivity and diagnose network-related issues.
+
+ping <url>
+ping google.com
+
+
+ifconfig:
+The ifconfig command in Linux is used to display information about network interfaces on the system.
+It provides details about network interfaces, including their IP addresses, MAC addresses, network masks, and more.
+
+
+ssh:
+The ssh command in Linux is used to establish a secure remote connection to another machine or server over a network.
+It stands for "Secure Shell" and provides a secure encrypted connection between the local and remote machines.
+SSH is commonly used for remote administration, file transfer, and tunneling network connections.
+
+
+
+
+----------------------------------- Completed ------------------------------

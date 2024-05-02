@@ -1,0 +1,106 @@
+find command:
+
+
+find <path> -name <filename>
+
+path represents the path where we want to start our search from.
+If we have '.' in place of <path>, it means we want to start our search from the current directory.
+
+
+find /home/jay -name *.txt
+
+This command will list all the files insides /home/jay ending with .txt
+It will also list down the hidden files.
+
+
+find /home/jay -name *.txt | grep -v .cache
+
+This command will not list the lines of output that will include .cache
+
+
+find . -name Documents
+
+This command will list all files or folders with the name Documents.
+
+
+find . -name Documents -type f
+
+This command will list only files with the name Documents.
+We can use 'd' for directories.
+
+
+find . -type f -name Documents -exec rm {} +
+
+This command will delete all files with name Documents inside the current directory.
+-exec means we want to execute a command against every item in the result.
+The command that we want to execute against every item is rm command.
+{}, the curly braces is a placeholder for the actual item itself.
+So, everytime the find command finds something, its going to put that something in place of the curly braces.
+So, we could almost think of this as a for loop.
+Its going to execute this against every item that it finds and a curly braces represent each item that comes up.
+'+' at the end is a terminator.
+Its the end of the command.
+It is basically closing each iteration off.
+
+
+find . -type f -name Documents -exec rm {} \;
+
+This is another variation where we are using '\;'.
+Semicolon is another way to terminate a find command.
+When we use semicolon, we have to have a '\' in front of it to escape it out.
+This is an issue with the shell.
+
+We can use anything: + or \;
+Both of them are used for terminating a find command.
+
+
+How to change the permissions of every file inside a directory in one shot?
+
+
+NOTE:
+chmod -R 600 Pictures
+
+-R means recursively.
+-R is used to apply the changes to everything from that folder where we start this command all the way down to everything underneath it.
+
+This command will also change the permissions for Pictures folder also.
+
+
+chmod -R u+x Pictures/
+
+
+find Pictures/ -type f -exec chmod 600 {} +
+
+This command will list all files and then we will execute chmod command on those files.
+
+
+find Pictures/ -type d -exec chmod 700 {} +
+
+This command will list all folders and then we will execute chmod command on those folders.
+
+
+sudo find /var/log -type f -name *.log
+
+This command will give us a list of log files inside the given directory.
+
+
+sudo find /var/log -type f -name *.log -exec truncate -s 0 {} +
+
+This command will list all of the log files inside the given directory.
+truncate command is used to truncate a file down to a specific size.
+Here, we are truncating log files to size 0.
+
+
+NOTE:
+When we want to do some changes on files/folders using a command, it is very necessary to first see the list of the files on which we are going to execute that command.
+
+
+find . -name *.mp3
+
+
+find . -name *.mp3 > results.txt
+
+It will dump the output of find command into results.txt file.
+
+
+-------------------------------------- Completed --------------------------------

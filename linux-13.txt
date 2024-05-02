@@ -1,0 +1,65 @@
+head and tail commands:
+
+
+head command shows the first 10 lines of the file.
+tail command shows the last 10 lines of the file.
+
+
+head /var/log/syslog
+
+This command will show the first 10 lines of the given file.
+
+
+wc -l
+wc means word count
+-l option gives us a count of the total number of lines in whatever output that we are piping into it.
+
+
+head /var/log/syslog | wc -l
+-> 10
+
+
+tail /var/log/syslog
+
+This command will show the last 10 lines of the given file.
+
+
+tail /var/log/syslog | wc -l
+-> 10
+
+
+head -n 25 syslog
+
+This command will print first 25 lines of the given file.
+-n allows us to clarify how many lines we want to show.
+
+
+head -n 25 syslog | wc -l
+-> 25
+
+
+tail -n 25 syslog
+
+This command will print last 25 lines of the given file.
+
+
+tail -n 25 syslog | wc -l
+-> 25
+
+
+cat syslog | grep ssh | head
+
+This command will show first 10 lines of given file which contains the word "ssh".
+
+
+-f option is specific to the tail command only.
+-f is follow mode.
+
+
+tail -f /var/log/syslog 
+
+This command will not return us to the command prompt.
+Press CTRL + C to go back to the command line.
+
+
+-------------------------------- Completed --------------------------------

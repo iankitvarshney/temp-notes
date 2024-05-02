@@ -1,0 +1,135 @@
+Processes, ports:
+
+
+
+pgrep chrome
+Gives us a list of process ids of running processes of chrome.
+
+
+pkill chrome
+It will kill all the running chrome browsers.
+
+
+relation between pid and ppid:
+In summary, the PPID establishes a hierarchical relationship between processes, enabling communication, coordination, and management within the operating system.
+It plays a vital role in process creation, termination, and resource allocation.
+
+
+for listing pid and ppid of processes:
+ps -axjf
+
+
+for listing browser's pid and ppid:
+ps -axjf | grep chrome
+
+
+stopping browser application from command line:
+pkill chrome
+
+
+list the top 3 processes by cpu usage:
+ps aux | sed '1d' | sort -k 3nr | head -3 | awk '{print $1,$2,$3,$4}'
+
+
+list the top 3 processes by memory usage:
+ps aux | sed '1d' | sort -k 4nr | head -3 | awk '{print $1,$2,$3,$4}'
+
+
+Start a Python HTTP server on port 8000
+
+Using Python 3:
+python3 -m http.server 8000
+
+Using Python 2:
+python -m SimpleHTTPServer 8000
+
+You can access the files through your web browser by navigating to http://localhost:8000
+
+
+Open another tab. Stop the process you started in the previous step:
+
+Using this, find the pid:
+sudo lsof -i:8000
+
+kill <pid>
+
+
+start a python http server on port 90:
+sudo python3 -m http.server 90
+
+To kill this server, use the following:
+sudo lsof -i:90
+sudo kill <pid>
+
+
+Display all active connections and the corresponding TCP / UDP ports:
+netstat -tuln
+
+
+Find the pid of the process that is listening on port 5432
+sudo lsof -i:<port>
+
+
+
+
+
+Managing software:
+
+Install htop:
+sudo apt update
+sudo apt install htop
+
+
+Install vim:
+sudo apt update
+sudo apt install vim
+
+
+Install nginx:
+sudo apt update
+sudo apt install nginx
+
+
+Uninstall nginx:
+
+For ubuntu/debian based systems:
+sudo apt remove nginx
+Or
+sudo apt purge nginx
+
+
+
+
+Misc:
+
+
+
+
+What's your local IP address:
+hostname -I
+
+
+Find the ip address of google.com
+dig +short google.com
+OR
+nslookup google.com
+
+
+How to check if internet is working using cli?
+
+You can use tools like curl or wget to make HTTP requests to a website and check if you get a response.
+
+For example:
+curl -I https://www.google.com
+
+This command sends an HTTP HEAD request to Google's homepage.
+If you receive a response with HTTP headers, it indicates that your internet connection is working.
+
+
+Where is the node command located? What about code?
+which node
+
+which code
+
+
+----------------------------------- Completed --------------------------------

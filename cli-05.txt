@@ -1,0 +1,14 @@
+xargs:
+
+
+printenv:
+The printenv command in Linux is used to display the values of environment variables.
+
+printenv [VARIABLE]
+
+printenv PATH
+
+
+
+
+------------------------------ Completed -----------------------------

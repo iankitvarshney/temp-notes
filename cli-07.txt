@@ -1,0 +1,38 @@
+Sample Review Questions:
+
+
+
+What is your user in Linux?
+whoami
+
+
+What is your group in Linux?
+In Linux, the groups command is used to display the groups a user belongs to.
+
+groups
+This will output a list of groups that the current user belongs to.
+
+groups <username>
+This will display the groups that the specified user belongs to.
+
+
+What is your computer architecture?
+uname
+
+-m or --machine: Prints the machine hardware name.
+-p or --processor: Prints the processor type or "unknown" if unavailable.
+
+And to print the machine hardware name (architecture), you can use:
+uname -m
+
+
+What is your audio driver?
+lspci -v | grep -i audio
+
+
+Go to home folder. Use find command to find all occurrences of "java" text anywhere in any filename or directory name in your system?
+
+
+
+
+-------------------------------------- Completed ------------------------------------
