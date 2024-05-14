@@ -1,0 +1,367 @@
+Different datatypes in js:
+string 
+number 
+boolean 
+undefined 
+null 
+symbol 
+object 
+bigint 
+
+
+let var and const
+
+var can be declared and accessed globally.
+let can be declared globally, but its access is limited to the block in which it is declared.
+const is also like let, it also supports block scoping, 
+but we have to initialize it with some value at the time of declaration and it cannot be changed.
+
+Variables declared by let are only available inside the block where they’re defined.
+Variables declared by var are available throughout the function in which they’re declared.
+
+function varScoping() {
+  var x = 1;
+
+  if (true) {
+    var x = 2;
+    console.log(x); // will print 2
+  }
+
+  console.log(x); // will print 2
+}
+
+function letScoping() {
+  let x = 1;
+
+  if (true) {
+    let x = 2;
+    console.log(x); // will print 2
+  }
+
+  console.log(x); // will print 1
+}
+
+
+why we must not use var ?
+
+Because var is more error prone in comparison to let and const.
+var supports function scope while let supports block scoping.
+
+
+why using global variables is bad ?
+
+global variables reduce modularity and flexibility.
+If we are working in a production code and we are using global variables, 
+then it would be extremely difficult to write code and name the variables.
+Because they will be accessible globally and that can create a lot of problems.
+
+
+truthy and falsy values:
+
+falsy values:
+"", -0, +0, NaN, null, undefined, false 
+
+All other values are truthy values.
+
+
+function hoisting?
+
+It refers to the process whereby the interpreter appears to move the declaration 
+of functions, variables, classes or imports to the top of their scope, 
+prior to execution of the code.
+
+It doesn't actually happens like this.
+In actual, the js code gets executed in two phases:
+- creation phase 
+- execution phase 
+
+In creation phase, all the var variables are initialized with undefined, not the actual values, 
+and all the functions declarations are saved inside the memory.
+So, in the execution phase, if we try to access a variable before its initialization, 
+it gives undefined.
+
+
+What happens when a function does not have a return statement ?
+
+A function returns undefined by default if it doesn't have a return statement.
+
+
+different ways of declaring a function:
+
+- function expression 
+- anonymous functions 
+- immediately invoked function expressions 
+- constructor functions 
+- getter functions 
+- hoisting 
+- arrow functions 
+
+function expression:
+
+var greet = function () {
+  console.log("good morning");
+}
+
+anonymous function:
+A function without a name is an anonymous function.
+They are mostly used as a callback function.
+Ex: setTimeout 
+
+
+IIFE:
+
+IIFE are used when we want to execute a function immediately after the declaration.
+
+Ex:
+(function () {
+  console.log("Welcome to Javascript");
+})();
+
+
+arrow function:
+It doesn't use the function keyword in its syntax.
+
+const greet = () => "Hello World"
+greet() // Hello World
+
+
+difference between normal functions and arrow functions:
+1. syntax 
+2. hoisting can't be achieved by using arrow functions.
+
+
+pass by value and pass by reference 
+
+Pass by value means when a variable is assigned to another variable, 
+the value stored in the variable is copied into the new variable. 
+They are independent of each other, each occupying its own memory space.
+
+While JavaScript is primarily a “pass by value” language, 
+it uses a concept called “pass by reference” when dealing with 
+objects (including arrays and functions).
+
+When an object is created in JavaScript, it is stored in a memory space, 
+and the variable associated with it stores the memory address or reference 
+where the object is stored.
+
+If you assign this object variable to another variable, it does not copy the object. 
+Instead, it copies the reference to the object. 
+Both variables now point to the same memory space, 
+which means changes through one variable are reflected when accessing the object 
+through the other variable.
+
+
+iterable datatypes : for and for of and forEach
+iterable and non-iterable : for in 
+
+
+Array utility methods:
+map 
+filter 
+sort 
+forEach 
+concat 
+every 
+some 
+includes 
+join 
+reduce 
+
+concat( )
+This method is used to merge two or more arrays and returns a new array, without changing the existing arrays.
+
+reduce() 
+JavaScript reduce() is a higher order function used in data manipulation that reduces an array 
+to a single value. 
+It takes two parameters: an accumulator and the current element of an array.
+
+
+Example:
+const elements = [{}, {}, 3];
+const value = elements.join(" ");
+console.log(value);
+
+Output:
+[object Object] [object Object] 3
+
+
+11. find( )
+This method returns the value of the first element in an 
+array that pass the test in a testing function.
+
+12. findIndex( )
+This method returns the index of the first element in an array 
+that pass the test in a testing function.
+
+13. indexOf( )
+This method returns the index of the first occurrence of the specified element 
+in the array, or -1 if it is not found.
+
+14. fill( )
+This method fills the elements in an array with a static value and returns the modified array.
+
+
+slice:
+It will not modify the original array.
+It returns a new array with start to end - 1 elements.
+
+(start, end+1) 
+(start) => It will return all elements from start to end of array 
+
+
+splice:
+Splice changes the contents of the original array.
+splice(start, optional delete count, optional items to add)
+
+20. unshift( )
+This method adds one or more elements to the beginning of an array 
+and returns the new length of the array.
+
+unshift:
+const arr = [1, 2, 3];
+arr.unshift(-1, -2);
+console.log(arr);
+
+[ -1, -2, 1, 2, 3 ]
+
+
+Object utility methods:
+
+Object.freeze
+Object.freeze() freezes an object. A frozen object cannot be changed anymore. It returns the same object that was passed in.
+
+We can't add or delete properties of the object which is freezed.
+
+
+Object.hasOwnProperty("property");
+It returns true or false.
+
+
+immutable and mutable methods in Javascript:
+
+
+
+
+
+In JavaScript, immutable methods do not modify the original data structure, but instead return a new data structure with the desired changes. On the other hand, mutable methods modify the original data structure directly. Here's a brief overview of both:
+
+### Immutable Methods:
+1. **Array Methods:**
+   - `concat()`: Returns a new array by combining the elements of the original array with the elements of another array or value(s).
+   - `slice()`: Returns a shallow copy of a portion of an array into a new array object.
+   - `map()`, `filter()`, `reduce()`: These methods create new arrays based on the transformation or filtering of the original array.
+
+2. **String Methods:**
+   - `slice()`, `substring()`, `substr()`: These methods return portions of the string without modifying the original string.
+
+3. **Object Methods:**
+   - `Object.assign()`: Copies the values of all enumerable own properties from one or more source objects to a target object, and returns the target object.
+   - Spread syntax (`...`): Used to create a shallow copy of objects.
+
+### Mutable Methods:
+1. **Array Methods:**
+   - `push()`, `pop()`, `shift()`, `unshift()`: These methods modify the original array by adding or removing elements.
+   - `splice()`: Changes the contents of an array by removing or replacing existing elements and/or adding new elements.
+
+2. **String Methods:**
+   - `replace()`, `toUpperCase()`, `toLowerCase()`: These methods directly modify the original string.
+
+3. **Object Methods:**
+   - Direct property assignment (`obj.property = value`): This directly modifies the object by adding or updating properties.
+
+Understanding the distinction between these two types of methods is crucial for managing data effectively, especially in complex applications where data integrity is essential.
+
+
+
+
+
+
+The difference between `throw new Error("Error message here")` and `throw "Error"` lies in how they handle error information and their effect on the call stack.
+
+1. **`throw new Error("Error message here")`:**
+   - This syntax creates a new `Error` object with the specified message.
+   - The `Error` object contains additional information about the error, such as the message, stack trace, and error name.
+   - Using `new Error()` provides more structured error information, making it easier to debug and understand what went wrong in the code.
+   - When this type of error is thrown, it captures the current stack trace, which can be useful for tracing back where the error originated in the code.
+
+Example:
+```javascript
+throw new Error("Something went wrong");
+```
+
+2. **`throw "Error"`:**
+   - This syntax throws a generic string as an error message.
+   - It lacks the additional information and structure provided by `new Error()`.
+   - Throwing a plain string can make error handling less informative and harder to debug since it doesn't provide any details about the error context or location.
+   - It's generally considered a less robust approach compared to `throw new Error()`.
+
+Example:
+```javascript
+throw "Something went wrong";
+```
+
+In summary, `throw new Error("Error message here")` is preferred because it provides more structured error information, including a stack trace, making it easier to diagnose and fix issues in the code. Using just `throw "Error"` should be avoided in favor of more informative error objects like `Error`.
+
+
+
+
+
+
+
+
+
+
+catch block in js is used for error handling.
+The catch block in JavaScript is crucial for error handling. 
+It allows developers to gracefully handle errors that occur during the execution of a try block. 
+Here's why the catch block is important:
+
+the catch block provides a mechanism to catch and handle these errors, 
+preventing them from crashing the application or causing unexpected behavior.
+
+When an error occurs, the catch block can be used to log relevant information about the error, 
+such as the error message, stack trace, or other contextual information.
+
+
+
+spread operator:
+It is used for creating a new copy of array or object.
+
+
+
+closures:
+closures are the functions with their lexical environment.
+
+lexical environment:
+lexical environment is the association between identifiers and the reference with the values 
+within the scope of execution.
+
+
+
+
+When we are returning a function from another function, then 
+the child function saves all the variables of the parent function
+
+
+
+why using value === undefined is better than using !value 
+
+Using !value can lead to issues if value is not declared within the current scope, 
+as it will throw a ReferenceError. This can be problematic, 
+especially if you're working in an environment where undeclared 
+variables are automatically treated as global variables.
+Using value === undefined avoids this issue by explicitly 
+checking for undefined without throwing errors if value is undeclared.
+
+
+
+
+The function in which we are passing another function, so this another function 
+is the callback function and the function in which the callback is getting passed, is the hof.
+
+
+JavaScript Engine is responsible for executing the JS code.
+Chrome V8 Engine.
+Call stack  where a 
+Heap  unstructured memory pool that stores all the objects needed for the application.
+

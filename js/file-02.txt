@@ -1,0 +1,2645 @@
+Weird History of JavaScript..
+
+In 1995, there was a very popular web browser - Netscape Navigator.
+Brendan Eich was working with Netscape Navigator.
+He built JavaScript for Netscape in just 10 days.
+JS was first named as Mocha.
+Mocha changed to LiveScript.
+But LiveScript was not becoming so popular at those times.
+As Java was a popular language, so they decided to change the name of JS from LiveScript to JavaScript.
+In 1996, Interner Explorer was also a very famous browser.
+So, they also implemented a new programming language called JScript for Internet Explorer.
+So, in 1996, there were two programming languages, JavaScript and JScript.
+If someone using JavaScript, his website will look good in Netscape and if someone using JScript, website will look good in Internet Explorer.
+The problem was that the website owners didn't have that much budget to develop a single website for two different programming languages.
+To solve this issue, JavaScript was taken to ECMA.
+ECMA is an International Organization which standardizes different technologies.
+In ECMA-262 document, all the rules, regulations, implementation features and how a scripting language should behave, are mentioned in this documentation.
+So, ECMA International standardized JavaScript and named it as ECMAScript because the trademark of JavaScript was on Oracle.
+
+In 1997, ES1(ECMAScript first specification) was introduced.
+Similarly, ES2, ES3.. also came.
+ES5 : 2009 (Lots of new features)
+ES6 : 2015 (Biggest update in the history of JS)
+ES6 is also known as the Modern JavaScript.
+
+There is a community of ECMA which is TC-39 (Technical Community 39)
+TC-39 members decide which features to include in JavaScript.
+They decided to launch an annual release of JavaScript.
+Due to this reason, ES6 was also named as ES2015.
+ES6 : ES2015
+ES7 : ES2016
+ES8 : ES2017
+
+JavaScript is backward compatible means older features of JS will also work on newer versions.
+But, JavaScript is not forward compatible means new features will not work on old browsers.
+
+Babel is a JavaScript compiler which converts the modern js code to ES5, so that it can work on older version of browsers also.
+
+NOTE: (ctrl + shift + j) for opening console in chrome.
+
+"use strict";
+It is used for enabling strict mode in js.
+
+Data Types (Primitive Data Types) 
+
+1. string
+2. number
+3. boolean
+4. undefined
+5. null
+6. BigInt
+7. Symbol
+
+Trick to convert number to string
+
+let age = 22;
+age = age + "";
+console.log(typeof(age));  // string
+
+
+Trick to convert string to number
+
+let myStr = +"34";
+console.log(typeof myStr);  // number
+
+Use + before any string to convert it to a number.
+
+Example:
+
+let string1 = "17";
+let string2 = "10";
+
+let newString = string1 + string2;
+console.log(newString);  // 1710
+
+
+Example:
+
+let string1 = "17";
+let string2 = "10";
+
+let newString = +string1 + +string2;
+console.log(newString);  // 27
+console.log(typeof newString);  // number
+
+const cannot be undefined.
+If we are declaring a const, we have to initialize it at the same time.
+
+const firstName;  // Error
+console.log(typeof firstName);
+
+
+In console.log(), we can print more than one thing also.
+
+let firstName = "Harshit";
+console.log(typeof firstName, firstName);  // string Harshit
+
+
+Important:
+
+console.log(typeof null);  // object
+
+If we find the type of null, then instead of giving null, it gives us object. This is a bug or an error in JavaScript.
+
+Why this bug hasn't been fixed ? 
+
+Various websites and frameworks are made previously keeping in mind that typeof null is an object. Now, if JavaScript fixed this bug, then all the code written previously for frameworks and websites will be wrong and will have to be changed. So, to avoid this, JavaScript has not fixed this bug.
+
+BigInt
+
+There is a limit for storing a number in JavaScript, which is
+
+console.log(Number.MAX_SAFE_INTEGER);  // 9007199254740991
+
+If we want to store a larger number, then we can use BigInt.
+BigInt is a primitive data type in JavaScript.
+
+Example:
+
+let num1 = BigInt(12);
+let num2 = 123n;
+
+console.log(num1 + num2);  // 135n
+
+All the math operations on BigInt can be performed with another BigInt number. Otherwise it will give an error.
+
+Falsy Values
+
+false
+""
+null
+undefined
+0
+
+Taking input from user:
+
+let userGuess = prompt("Guess a number");
+console.log(userGuess);
+console.log(typeof userGuess);  // string
+
+NOTE: The thing to note here is that prompt() function takes input in the form of string.
+
+let userGuess = +prompt("Guess a number");
+console.log(userGuess);
+console.log(typeof userGuess);  // number
+
+
+for loop:
+
+Example-1:
+
+for(let i=0; i<10; i++){
+	console.log(i);
+}
+
+console.log(i);  // Error
+
+
+Example-2:
+
+for(var i=0; i<10; i++){
+	console.log(i);
+}
+
+console.log(i);  // 10
+
+
+Arrays:
+
+Arrays are ordered collection of items.
+Arrays are of reference type.
+Arrays can store any data types.
+Arrays are mutable.
+
+let mixed = [1, 2, 2.3, "string", null, undefined];
+
+console.log(mixed);
+
+
+Reference types in JavaScript are Objects.
+So, Array is an Object in JavaScript.
+
+Example:
+
+let fruits = ["apple", "mango", "grapes"];
+let obj = {};  // object literal
+
+console.log(typeof fruits);  // object
+console.log(typeof obj);  // object
+
+console.log(Array.isArray(fruits)); // true
+console.log(Array.isArray(obj));  // false
+
+Array push pop
+
+let fruits = ["apple", "mango", "grapes"];
+
+//push
+push method insert a new element at the end of an array.
+
+fruits.push("banana");
+
+//pop
+pop method removes an element from the end of an array.
+pop method also returns the element removed.
+
+let poppedFruit = fruits.pop();
+console.log(fruits);  // ["apple", "mango"]
+
+console.log("Popped fruit is", poppedFruit);
+
+//unshift
+unshift method inserts an element at the beginning of an array.
+
+fruits.unshift("banana");
+console.log(fruits);  // ["banana", "apple", "mango", "grapes"]
+
+//shift
+shift method removes an element from start of an array.
+
+let removedFruit = fruits.shift();
+console.log(fruits);  // ["mango", "grapes"]
+
+console.log("Removed fruit is", removedFruit);
+
+
+push and pop methods are fast as compared to shift and unshift.
+
+
+Primitive vs Reference Data Types
+
+// primitive types
+
+let num1 = 6;
+let num2 = num1;
+console.log("value of num1 is", num1); // 6
+console.log("value of num2 is", num2); // 6
+num1++;
+console.log("after incrementing num1");
+console.log("value of num1 is", num1); // 7
+console.log("value of num2 is", num2); // 6
+
+
+// reference types
+
+let array1 = ["item1", "item2"];
+let array2 = array1;
+console.log("array1", array1);  // ["item1", "item2"]
+console.log("array2", array2);  // ["item1", "item2"]
+
+array1.push("item3");
+
+console.log("array1", array1);  // ["item1", "item2", "item3"]
+oonsole.log("array2", array2);  // ["item1", "item2", "item3"]
+
+console.log(array1 === array2);  // true
+
+
+Creating a clone of an array
+
+let array1 = ["item1", "item2"];
+
+let array2 = array1.slice(0);
+
+console.log(array1 === array2);  // false
+
+Using the slice method, we can clone an array.
+Now these will be two different arrays inside heap.
+
+// method-2
+
+let array2 = [].concat(array1);
+
+// method-3
+Using spread operator, we can clone an array.
+
+let array2 = [...array1];
+
+
+Cloning and adding new elements in an array..
+
+
+let array1 = ["item1", "item2"];
+
+let array2 = array1.slice(0).concat(["item3", "item4"]);
+
+let array2 = [].concat(array1, ["item3", "item4"]);
+
+let array2 = [...array1, "item3", "item4"];
+
+let oneMoreArray = ["item3", "item4"];
+
+let array2 = [...array1, ...oneMoreArray];
+
+
+Using const for creating array..
+
+const fruits = ["apple", "mango"];
+
+fruits.push("banana");  // No error
+
+fruits = ["grapes", "pineapple"];  // Error
+
+Prefer mostly to use const for creating reference types because it prevents us from creating errors.
+
+
+// for of loop in array
+
+const fruits = ["apple", "mango", "grapes"];
+
+for(let fruit of fruits){
+	console.log(fruit);
+}
+
+
+// for in loop in array
+for in loop returns the indexes of an array.
+
+const fruits = ["apple", "mango", "grapes"];
+
+for(let index in fruits){
+	console.log(fruits[index]);
+}
+
+
+Array Destructuring..
+
+const myArray = ["value1", "value2", "value3"];
+
+let myvar1 = myArray[0];
+let myvar2 = myArray[1];
+
+For doing this, we can use array destructuring
+
+let [myvar1, myvar2] = myArray;
+
+console.log("value of myvar1 is", myvar1);
+console.log("value of myvar2 is", myvar2);
+
+Now, we can use myvar1 and myvar2 as normal variables.
+
+If in the above case, myArray has only one element, then myvar2 will be undefined.
+
+Now, if we have to skip an index of the array
+
+Example:
+
+const myArray = ["value1", "value2", "value3"];
+
+let [myvar1, , myvar2] = myArray;
+
+console.log(myvar1);  // value1
+console.log(myvar2);  // value3
+
+
+Creating new variables and array from array destructuring..
+
+Example:
+
+const myArray = ["value1", "value2", "value3", "value4"];
+
+let [myvar1, myvar2, ...myNewArray] = myArray;
+
+console.log(myvar1);  // value1
+console.log(myvar2);  // value2
+console.log(myNewArray);  // ["value3", "value4"]
+
+
+Objects..
+
+Objects are of reference types.
+Arrays are good but not sufficient for real world data.
+Objects store key value pairs.
+Objects don't have index.
+
+When we create object using curly braces {}, then that is called as an object literal.
+
+const person = {name: "Harshit", age: 22};
+console.log(person);
+
+Object keys are also called as properties of object.
+
+const person = {
+	name: "Harshit",
+	age: 22,
+	hobbies: ["guitar", "sleeping", "listening music"]
+};
+
+console.log(person.hobbies);
+
+// Adding key value pair to objects
+
+person.gender = "male";
+
+person["gender"] = "male";
+
+In JavaScript, object keys are in string format by default.
+
+console.log(person["name"]);
+console.log(person["age"]);
+
+
+We can also define an object like this..
+
+const person = {
+	"name": "Harshit",
+	"age": 22
+};
+
+
+Difference between dot and bracket notation
+
+const person = {
+	name: "Harshit",
+	age: 22,
+	"person hobbies": ["guitar", "sleeping", "listening music"]
+};
+
+console.log(person.person hobbies);  // Error
+
+console.log(person["person hobbies"]);
+
+
+Inserting an Object key using a variable..
+
+const key = "email";
+
+person[key] = "harshitvashisth@gmail.com";
+console.log(person);
+
+Now the bracket notation will compute the value of key as "email" and store it in the object.
+
+
+Iterating an Object..
+
+const person = {
+	name: "Harshit",
+	age: 22,
+	"person hobbies": ["guitar", "sleeping", "listening music"]
+};
+
+
+There are two ways for iterating an object
+1. for in loop
+2. Object.keys
+
+for(let key in person){
+	console.log(person.key); 
+}
+
+//This will give us undefined three times.
+
+So, use this..
+
+for (let key in person){
+	console.log(person[key]);
+}
+
+for(let key in person){
+	console.log(`${key} : ${person[key]}`);
+}
+
+
+Object.keys returns an array of keys in string form.
+
+console.log(Object.keys(person)); 
+// ["name", "age", "person hobbies"]
+
+console.log(typeof (Object.keys(person)));  // object
+
+Example:
+
+for(let key of Object.keys(person)){
+	console.log(person[key]);
+}
+
+
+Computed Properties..
+
+In this, we want to assign key value pairs to an object using variables.
+
+const key1 = "objkey1";
+const key2 = "objkey2";
+
+const value1 = "myvalue1";
+const value2 = "myvalue2";
+
+We want to make an object like this..
+
+const obj = {
+	objkey1 : "myvalue1",
+	objkey2 : "myvalue2"
+};
+
+// method-1
+
+const obj = {
+	[key1] : value1,
+	[key2] : value2
+};
+console.log(obj);
+
+
+// method-2
+
+const obj = {};
+
+obj[key1] = value1;
+obj[key2] = value2;
+console.log(obj);
+
+
+Spread operator in arrays and objects..
+
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+
+const newArray = [...array1, ...array2, 8, 10];
+
+We can also spread any string..
+
+const newArray = [..."abcd"];
+
+const newArray = [..."123456789"];
+
+console.log(newArray);
+
+
+NOTE: In an object, same property cannot occur more than once.
+
+Example:
+const obj1 = {
+	key1: "value1",
+	key2: "value2",
+	key1: "value59",
+};
+
+console.log(obj1);
+{key1: "value59", key2: "value2"}
+
+
+//spread operator in objects
+
+const obj1 = {
+	key1: "value1",
+	key2: "value2",
+};
+
+const obj2 = {
+	key1: "valueUnique",
+	key3: "value3",
+	key4: "value4",
+};
+
+const newObject = {...obj1, ...obj2};
+
+// In this case, obj2's key1 will exist.
+
+const newObject = {...obj1, ...obj2, key8: "value8"};
+
+We can also spread other iterables inside an object.
+For example: If we spread a string or an array inside an object, then their indexes will become the keys.
+
+const newObject = {..."abc"};
+
+{0: "a", 1: "b", 2: "c"}
+
+const newObject = {...["item1", "item2"]};
+
+
+Object Destructuring..
+
+const band = {
+	bandName: "led zeppelin",
+	famousSong: "stairway to heaven",
+	year: 1968,
+	anotherFamousSong: "kashmir",
+};
+
+let {bandName, famousSong} = band;
+
+console.log(bandName);  // led zeppelin
+console.log(famousSong);  // stairway to heaven
+
+Example:
+
+let {bandName: var1, famousSong: var2} = band;
+
+console.log(bandName);  // Error
+console.log(var1);  // led zeppelin
+
+//creating variables and object using object destructuring
+
+let {bandName, famousSong, ...restProps} = band;
+
+console.log(bandName);  // variable
+console.log(restProps);  // object
+
+Objects inside an Array..
+
+//It is very useful in real world applications.
+
+const users = [
+    {userId: 1, firstName: 'harshit', gender: 'male'},
+    {userId: 2, firstName: 'mohit', gender: 'male'},
+    {userId: 3, firstName: 'nitish', gender: 'male'},
+]
+
+for(let user of users){
+	console.log(user);
+}
+
+for(let user of users){
+	console.log(user.firstName);
+}
+
+
+Nested Destructuring
+
+const users = [
+    {userId: 1, firstName: 'harshit', gender: 'male'},
+    {userId: 2, firstName: 'mohit', gender: 'male'},
+    {userId: 3, firstName: 'nitish', gender: 'male'},
+]
+
+const [user1, user2, user3] = users;
+console.log(user1);
+
+//user1, user2 and user3 are objects.
+
+If we want to destructure properties from objects inside an array
+
+const [{firstName}, , {gender}] = users;
+
+console.log(firstName);  // harshit
+console.log(gender);  // male
+
+Now if we want to change the variable names, we can use this..
+
+const [{firstName: user1firstName}, , {gender: user3gender}] = users;
+
+console.log(user1firstName);  // harshit
+console.log(user3gender);  // male
+
+Similarly, we can extract more than one properties..
+
+const [{firstName: user1firstName, userId}, , {gender: user3gender}] = users;
+
+console.log(userId);  // 1
+
+
+NOTE: console.log(undefined + undefined);  // NaN
+
+
+Functions..
+
+This is a function declaration.
+
+function isEven(number){
+	return number % 2 === 0;
+}
+
+
+Function Expression
+
+const singHappyBirthday = function(){
+	console.log("Happy Birthday to you....");
+};
+
+singHappyBirthday();  // calling
+
+
+Arrow functions..
+
+//function expression
+
+const singHappyBirthday = function(){
+	console.log("Happy Birthday to you..");
+}
+
+// arrow function
+
+const singHappyBirthday = () => {
+	console.log("Happy Birthday to you..");
+}
+
+singHappyBirthday();  // calling
+
+If the function is taking only one parameter, then we can write arrow function as..
+
+const isEven = number => {
+	return number % 2 === 0;
+}
+
+We can also write like this..
+
+const isEven = number => number % 2 === 0;
+
+
+Hoisting (intro)..
+
+hello();  // No Error
+
+function hello(){
+	console.log("hello world");
+}
+
+In case of function expression, this will give us an error..
+
+hello();  // Error
+
+const hello = function(){
+	console.log("hello world");
+}
+
+Example:
+
+console.log(hello);  // undefined
+var hello = "hello world";
+console.log(hello);  // hello world
+
+Example:
+
+console.log(hello);  // Error
+let hello = "hello world";
+console.log(hello);
+
+// Similar case is with const, it will also give us an error.
+
+
+Functions inside function..
+
+function app(){
+	const myFunc = () => {
+		console.log("hello from myFunc");
+	}
+	
+	const addTwo = (num1, num2) => {
+		return num1 + num2;
+	}
+	
+	const mul = (num1, num2) => num1 * num2;
+	
+	console.log("inside app");
+	myFunc();
+	console.log(addTwo(2,3));
+	console.log(mul(2,3));
+}
+
+app();
+
+Output:
+inside app
+hello from myFunc
+5
+6
+
+
+Block scope vs function scope
+
+// let and const are block scope
+// var is function scope
+
+function scope means, if in a file, we have defined a variable with var, we can access it anywhere inside that file.
+
+
+Default Parameters..
+
+function addTwo(a, b=0){
+	return a+b;
+}
+
+const ans = addTwo(4);  // ans: 4
+
+const ans = addTwo(4, 8);  // ans: 12
+
+
+Rest Parameters
+
+function myFunc(a, b, ...c){
+	console.log(`a is ${a}`);
+	console.log(`b is ${b}`);
+	console.log(`c is`, c);
+}
+
+myFunc(3,4,5,6,7,8,9);
+
+Output:
+a is 3
+b is 4
+c is [5, 6, 7, 8, 9]
+
+// here c is an array.
+
+Example:
+
+function addAll(...numbers){
+	let total = 0;
+	for(let number of numbers){
+		total = total + number;
+	}
+	return total;
+}
+
+const ans = addAll(1,2,3,4,5);
+console.log(ans);  // 15
+
+
+Parameter Destructuring..
+
+This is mostly used with objects and in React.
+
+const person = {
+	firstName: "harshit",
+	gender: "male",
+}
+
+function printDetails({firstName, gender, age}){
+	console.log(firstName);
+	console.log(gender);
+	console.log(age);
+}
+
+printDetails(person);  
+
+Output: 
+harshit
+male
+undefined
+
+
+Callback function..
+Accepting a function as an input in a function and then calling it from the other function is known as the callback function.
+
+Example:
+
+function myFunc2(){
+	console.log("inside my func 2");
+}
+
+function myFunc(a){
+	console.log(a);
+	a();
+}
+
+myFunc(myFunc2);
+
+
+There is a convention that if we are taking a function as input in a function, then we name that input function as callback.
+
+Example:
+
+function myFunc2(name){
+	console.log("inside my func 2");
+	console.log(`your name is ${name}`);
+}
+
+function myFunc(callback){
+	console.log("hello there....");
+	callback("harshit");
+}
+
+myFunc(myFunc2);
+
+Output: 
+hello there
+inside my func 2
+your name is harshit
+
+Callback function simply means a function which we take as an input and then called it.
+
+
+Function returning function..
+
+function myFunc(){
+	function hello(){
+		return "hello world";
+	}
+	return hello;
+}
+
+const ans = myFunc();
+console.log(ans());  // hello world
+
+
+A function in which we are accepting another function as input or returning another function or doing both the things, then that function is known as a higher order function.
+
+Example:
+
+function myFunc(){
+	return function(){
+		return "hello world";
+	};
+}
+
+const ans = myFunc();
+console.log(ans());
+
+
+Important array methods..
+
+1. forEach
+2. map
+3. filter
+4. reduce
+
+
+forEach..
+
+const numbers = [4, 2, 5, 8];
+
+function myFunc(number, index){
+	console.log(`index is ${index} number is ${number}`);
+}
+
+for(let i=0; i < numbers.length; i++){
+	myFunc(numbers[i], i);
+}
+
+Here we are running a loop and passing every number and its index one by one to the function.
+This work can be easily done by using forEach method..
+
+numbers.forEach(myFunc);
+
+forEach() takes a callback as input.
+
+forEach repeatedly calls the myFunc according to the number of elements present inside numbers array.
+forEach() passes the array element and its index as an argument inside the callback function automatically.
+
+Example:
+
+numbers.forEach(function(number, index){
+	console.log(`index is ${index} number is ${number}`);
+});
+
+Output: 
+index is 0 number is 4
+index is 1 number is 2
+index is 2 number is 5
+index is 3 number is 8
+
+Example:
+
+numbers.forEach(function(number){
+	console.log(number*3);
+});
+
+// realistic example of forEach()
+
+Example: 
+
+const users = [
+    {firstName: "harshit", age: 23},
+    {firstName: "mohit", age: 21},
+    {firstName: "nitish", age: 22},
+    {firstName: "garima", age: 20},
+];
+
+// we want to print the firstName of users.
+
+users.forEach(function(user){
+	console.log(user.firstName);
+})
+
+// arrow function with forEach()
+
+users.forEach((user)=>{
+	console.log(user.firstName);
+});
+
+
+map method..
+
+map() method also takes a callback function as an input like the forEach() method.
+
+map() method always creates a new array and stores the result returned by the callback method into that array.
+So, the callback method must return something which can be stored inside the array created by map method.
+
+map() method also passes the element and its index as the arguments to the callback method.
+
+Example:
+
+const numbers = [3, 4, 6, 1, 8];
+
+const square = function(number){
+	return number * number;
+}
+
+const squareNumber = numbers.map(square);
+console.log(squareNumber);  // [9, 16, 36, 1, 64]
+
+If the callback method is not returning anything, then by default, the map method returns undefined to the array.
+
+Example:
+
+const numbers = [3, 4, 6, 1, 8];
+
+const squareNumber = numbers.map(function(number){
+	return number * number;
+});
+console.log(squareNumber);
+
+// using arrow function inside map method..
+
+const squareNumber = numbers.map((number)=>{
+	return number * number;
+});
+
+
+Example:
+
+const squareNumber = numbers.map((number, index)=>{
+	return `index: ${index}, ${number * number}`;
+})
+console.log(squareNumber);
+
+//realistic example of map method..
+
+we want to store the firstNames of users in an array.
+
+const users = [
+    {firstName: "harshit", age: 23},
+    {firstName: "mohit", age: 21},
+    {firstName: "nitish", age: 22},
+    {firstName: "garima", age: 20},
+];
+
+const userNames = users.map((user)=>{
+	return user.firstName;
+});
+
+console.log(userNames);
+// ["harshit", "mohit", "nitish", "garima"]
+
+
+filter method..
+
+filter method also takes a callback function as argument.
+The callback function of the filter method must return a boolean value.
+filter method also creates a new array.
+filter method only stores those elements inside the array for which the callback method returns true.
+
+Example:
+
+const numbers = [1, 3, 2, 6, 4, 8];
+
+const isEven = function(number){
+	return number % 2 === 0;
+};
+
+const evenNumbers = numbers.filter(isEven);
+console.log(evenNumbers);
+// [2, 6, 4, 8]
+
+Example:
+
+const oddNumbers = numbers.filter((number)=>{
+	return number % 2 !== 0;
+});
+console.log(oddNumbers);  // [1, 3]
+
+
+Reduce Method..
+
+reduce method also takes a callback function as input.
+callback function can be other function, function expression, anonymous function or an arrow function.
+
+Example:
+
+const numbers = [1, 2, 3, 4, 5, 10];
+
+const sum = numbers.reduce((accumulator, currentValue)=>{
+	return accumulator + currentValue;
+});
+
+console.log(sum);  // 25
+
+// working
+
+accumulator,	currentValue,	return
+    1               2             3
+    3               3             6
+    6               4             10
+    10              5             15
+    15              10            25
+    
+So, the returned value is 25.
+
+In reduce method, we can also pass a default value for the accumulator.
+
+Example:
+const sum = numbers.reduce((accumulator, currentValue)=>{
+	return accumulator + currentValue;
+}, 0);
+
+accumulator,	currentValue,	return
+    0               1             1
+    1               2             3
+    3               3             6
+    6               4             10
+    10              5             15
+    15              10            25
+    
+
+// real life example of reduce method
+
+Example:
+
+const userCart = [
+    {productId: 1, productName: "mobile", price: 12000},
+    {productId: 2, productName: "laptop", price: 22000},
+    {productId: 3, productName: "tv", price: 15000},
+];
+
+const totalAmount = userCart.reduce((totalPrice, currentProduct)=>{
+	return totalPrice + currentProduct.price;
+}, 0);
+
+console.log(totalAmount);  // 49000
+
+
+Sort Method..
+
+sort method changes the original array.
+
+const numbers = [5, 9, 1200, 400, 3000];
+numbers.sort();
+console.log(numbers);  // [1200, 3000, 400, 5, 9]
+
+JavaScript doesn't sorting the elements as numbers.
+It is sorting the elements, assuming them to be strings.
+
+sort method sorts the elements according to ascii values.
+
+Example:
+
+const userNames = ['harshit', 'anuj', 'mohit', 'Anu', 'Hitesh'];
+userNames.sort();
+console.log(userNames);
+
+// ['Anu', 'Hitesh', 'anuj', 'harshit', 'mohit']
+
+This is because the ascii values of capital letters are smaller than the ascii values of small letters.
+
+sort method can also take a callback function as input.
+
+Example:
+
+const numbers = [5, 9, 1200, 400, 3000];
+numbers.sort((a, b)=>{
+	return a-b;
+});
+console.log(numbers);  // [5, 9, 400, 1200, 3000]
+
+// We can also write it as..
+
+numbers.sort((a, b)=>a-b);
+
+// working..
+
+a-b ----> positive ----> (b, a)
+a-b ----> negative ----> (a, b)
+
+If we want to sort numbers in descending order, we can use (b-a)
+
+Example:
+numbers.sort((a, b)=>{
+	return b-a;
+});
+
+// practical use-case
+
+const products = [
+    {productId: 1, productName: "p1", price: 300},
+    {productId: 2, productName: "p2", price: 3000},
+    {productId: 3, productName: "p3", price: 200},
+    {productId: 4, productName: "p4", price: 8000},
+    {productId: 5, productName: "p5", price: 500},
+];
+
+// lowToHigh
+const lowToHigh = products.slice(0).sort((a, b)=>{
+	return a.price - b.price;
+});
+
+console.log(lowToHigh);
+
+
+// highToLow
+const highToLow = products.slice(0).sort((a, b)=>{
+	return b.price - a.price;
+});
+
+console.log(highToLow);
+
+
+find method..
+
+find method also takes a callback function as an input.
+find method will return the first occurence of element which satisfies the required condition.
+
+Example:
+
+const myArray = ["hello", "cat", "dog", "lion"];
+
+function isLength3(string){
+	return string.length === 3;
+}
+
+const ans = myArray.find(isLength3);
+console.log(ans);  // cat
+
+If there is no element present inside the array, which satisfies the required condition, then find method will return undefined.
+
+
+// find method with arrow function..
+
+const ans = myArray.find((string)=>string.length===3);
+console.log(ans);  // cat
+
+// realistic example of find method..
+
+const users = [
+    {userId: 1, userName: "harshit"},
+    {userId: 2, userName: "harsh"},
+    {userId: 3, userName: "nitish"},
+    {userId: 4, userName: "mohit"},
+    {userId: 5, userName: "aaditya"},
+];
+
+const myUser = users.find((user)=>user.userId===3);
+console.log(myUser);
+
+
+every method..
+
+every method also takes a callback method as input.
+callback function should return boolean value.
+every method will also return a boolean value.
+every method returns true if all the elements of the array are satisfying the required condition, else it will return false.
+
+Example:
+
+const numbers = [2, 4, 6, 8, 10];
+
+const ans = numbers.every((number)=>number%2===0);
+console.log(ans);  // true
+
+
+Example:
+
+const numbers = [2, 4, 6, 9, 10];
+
+const ans = numbers.every((number)=>number%2===0);
+console.log(ans);  // false
+
+
+Similarly, we can also write it like this..
+
+const numbers = [2, 4, 6, 9, 10];
+
+function isEven(number){
+	return number % 2 === 0;
+}
+
+const ans = numbers.every(isEven);
+console.log(ans);  // false
+
+// realistic example of every method..
+
+const userCart = [
+    {productId: 1, productName: "mobile", price: 12000},
+    {productId: 2, productName: "laptop", price: 22000},
+    {productId: 3, productName: "tv", price: 15000},
+];
+
+// check price of every item < 30000
+
+const ans = userCart.every((cartItem)=>cartItem.price < 30000);
+console.log(ans);  // true
+
+
+some method..
+
+some method also takes a callback function as input.
+If there is any element present in array which is satisfying the given condition, then some method will return true, otherwise it will return false.
+
+Example:
+const numbers = [3, 5, 8, 9];
+
+const ans = numbers.some((number)=>number%2===0);
+console.log(ans);  // true
+
+
+Example:
+const numbers = [3, 5, 11, 9];
+
+const ans = numbers.some((number)=>number%2===0);
+console.log(ans);  // false
+
+
+// realistic example of some method..
+
+const userCart = [
+    {productId: 1, productName: "mobile", price: 12000},
+    {productId: 2, productName: "laptop", price: 22000},
+    {productId: 3, productName: "tv", price: 35000},
+    {productId: 4, productName: "macbook", price: 250000},
+];
+
+const ans = userCart.some((cartItem)=>cartItem.price > 100000);
+console.log(ans);  // true
+
+
+fill method..
+
+If we want to create an array of particular size having every element equal to some value then we can use fill method.
+
+Example:
+
+const myArray = new Array(10).fill(-1);
+console.log(myArray);
+
+// another use case of fill method..
+
+fill method changes the original array.
+
+Example:
+
+const myArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
+myArray.fill(value, start index, end index + 1);
+
+myArray.fill(0, 2, 5);
+
+console.log(myArray);  // [1, 2, 0, 0, 0, 6, 7, 8]
+
+
+splice method..
+
+If we want to insert or delete something from the middle of an array, then we can use splice method.
+splice method changes the original array.
+
+// delete example..
+
+const myArray = ['item1', 'item2', 'item3'];
+
+myArray.splice(start index, number of elements to delete);
+
+myArray.splice(1, 1);
+
+console.log(myArray);  // ["item1", "item3"]
+
+When we delete elements using splice, it will also return the deleted elements inside an array.
+
+Example:
+
+const deletedItem = myArray.splice(1, 1);
+console.log("Deleted Items", deletedItem);  // ["item2"]
+
+
+// insert example..
+
+const myArray = ['item1', 'item2', 'item3'];
+
+myArray.splice(start index, no. of elements to delete, insert);
+
+myArray.splice(1, 0, 'inserted item');
+
+console.log(myArray);
+// ["item1", "inserted item", "item2", "item3"]
+
+
+// insert and delete together..
+
+const myArray = ['item1', 'item2', 'item3'];
+
+const deletedItems = myArray.splice(1, 2, "inserted item1", "inserted item2");
+
+console.log(myArray);
+// ["item1", "inserted item1", "inserted item2"]
+
+console.log(deletedItems);
+// ["item2", "item3"]
+
+
+Iterables..
+
+Iterables are those on which we can apply for of loop.
+Ex: string, array are iterable.
+
+Example:
+const firstName = "Harshit";
+for(let char of firstName){
+	console.log(char);
+}
+
+objects are not iterable.
+
+
+Array like objects..
+
+Array like objects are those who have the length property and we can access them using indexes.
+Ex: string
+
+
+Sets..
+
+Sets are iterable.
+Sets also have its own methods.
+In sets, there is no index-based access.
+Order is not guaranteed.
+Unique items only ( no duplicates allowed).
+
+const numbers = new Set([1, 2, 3, 3]);
+console.log(numbers);  // {1, 2, 3}
+
+console.log(numbers[2]);  // undefined
+
+We can create a set using any iterable.
+
+const alphabets = new Set("abc");
+console.log(alphabets);  // {"a", "b", "c"}
+
+In Sets, we can store different data type elements also.
+
+Example: 
+
+const items = ["item1", "item2"];
+const numbers = new Set();
+numbers.add(1);
+numbers.add(2);
+numbers.add(items);
+numbers.add(items);
+
+// items array will add only once because it is the same array inside memory.
+
+
+Example:
+
+const numbers = new Set();
+numbers.add(1);
+numbers.add(2);
+numbers.add(['item1', 'item2']);
+numbers.add(['item1', 'item2']);
+console.log(numbers);
+
+Now, the above two arrays will store twice because they are different arrays inside memory.
+
+has method in sets is used to check whether an element exists in set or not and it returns a boolean value.
+
+console.log(numbers.has(1));  // true
+
+Sets are iterable.
+
+for(let number of numbers){
+	console.log(number);
+}
+
+// Sets are used when we want to store unique values only and one value cannot occur more than once.
+
+On sets, we cannot use the length property. It will return undefined.
+
+console.log(numbers.length);  // undefined
+
+Using for of loop, we can find the length of a set.
+
+const myArray = [1, 2, 4, 4, 5, 6, 5, 6];
+const uniqueElements = new Set(myArray);
+let length = 0;
+for(let element of uniqueElements){
+	length++;
+}
+console.log(length);  // 5
+
+
+Maps..
+
+map stores the key value pairs like an object.
+
+NOTE: An object keys are mostly in string format. Keys can be in symbols.
+
+// object literal
+// key -> string
+// key -> symbol
+
+const person = {
+	firstName: "harshit",
+	age: 7,
+	1: "one"
+};
+
+console.log(person['1']);  // one
+
+for(let key in person){
+	console.log(typeof key);
+}
+
+// It will print string three times.
+// So, keys of an object are mostly in string format.
+
+
+NOTE: The main difference between an object and a map is that, in maps, the key can be of any type.
+
+const person = new Map();
+
+person.set('firstName', 'Harshit');
+person.set('age', 7);
+person.set(1, 'one');  // here 1 is not a string, it is a number
+
+console.log(person);
+console.log(person.firstName);  // undefined
+console.log(person['firstName']);  // undefined
+
+console.log(person.get('firstName'));  // Harshit
+console.log(person.get(1));  // one
+
+//printing all keys of a map
+console.log(person.keys());  // {"firstName", "age", 1}
+
+for(let key of person.keys()){
+	console.log(key);
+}
+
+Map keys can have any data type..
+
+const person = new Map();
+
+person.set([1,2,3], "onetwothree");
+person.set({1: 'one'}, "onetwothree");
+console.log(person);
+
+
+Maps are iterable, so we can apply for of loop on Maps
+Objects are not iterable, so we can apply for in loop on objects.
+
+for(let key of person){
+	console.log(key);
+}
+
+for of loop on a map returns us the arrays containing individual key and value pairs.
+
+// destructure key and value from an array returned by a map
+
+for(let [key, value] of person){
+	console.log(key, value);
+}
+
+Output:
+firstName Harshit
+age 7
+1 "one"
+
+// Maps
+
+Map is an iterable.
+Stores data in ordered fashion
+Stores key value pairs (like object)
+Duplicate keys are not allowed like objects
+
+// Difference between maps and objects
+
+Objects can only have string or symbol as keys.
+In maps, you can use anything as key like array, number, string.
+
+Example:
+
+const person = new Map([['firstName', 'Harshit'], ['age', 7]]);
+
+Complicated Example:
+
+const person1 = {
+	id: 1,
+	firstName: "Harshit"
+};
+const person2 = {
+	id: 2,
+	firstName: "Harshita"
+};
+
+const extraInfo = new Map();
+extraInfo.set(person1, {age: 8, gender: "male"});
+extraInfo.set(person2, {age: 9, gender: "female"});
+console.log(extraInfo);
+
+console.log(person1.id);  // 1
+console.log(extraInfo.get(person1).age);  // 8
+console.log(extraInfo.get(person2).gender);  // female
+
+
+Cloning object using Object.assign()..
+
+Example:
+
+const obj = {
+	key1: "value1",
+	key2: "value2"
+};
+
+const obj2 = Object.assign({}, obj);  // cloning an object
+
+obj.key3 = "value3";
+
+console.log(obj);
+console.log(obj2);
+
+
+Optional Chaining..
+
+const user = {
+	firstName: "Harshit",
+	address: {houseNumber: "1234"}
+};
+
+console.log(user.firstName);  // Harshit
+console.log(user.address.houseNumber);  // 1234
+
+
+Example:
+
+const user = {
+	firstName: "harshit",
+	// address: {houseNumber: '1234'}
+};
+
+console.log(user.firstName);  // harshit
+console.log(user.address);  // undefined
+console.log(user.address.houseNumber);  // Error
+
+Error is occuring because we are trying to access the property on undefined.
+Now, we don't want any error. Instead, it will give us undefined.
+
+Using optional chaining, we can avoid that error.
+
+console.log(user?.firstName);  // harshit
+console.log(user?.address?.houseNumber);  // undefined
+
+
+Methods..
+Functions inside an object are methods.
+
+const person = {
+	firstName: "harshit",
+	age: 18,
+	about: function(){
+		console.log(`person name is ${this.firstName} and person age is ${this.age}`);
+	}
+};
+
+person.about();
+
+
+Example:
+
+function personInfo(){
+	console.log(`person name is ${this.firstName} and person age is ${this.age}`);
+}
+
+const person1 = {
+	firstName: "harshit",
+	age: 8,
+	about: personInfo
+};
+const person2 = {
+	firstName: "mohit",
+	age: 18,
+	about: personInfo
+};
+const person3 = {
+	firstName: "nitish",
+	age: 17,
+	about: personInfo
+};
+
+person1.about();
+// person name is harshit and person age is 8
+
+Now, about function is called by person1.
+So, for now, this in the about function is person1 object.
+It means now this in about function is referring to person1 object.
+
+
+This keyword..
+
+Example:
+
+console.log(this);  // It will print the window object
+console.log(window);  // It will also print the window object
+
+console.log(this===window);  // true
+
+Example:
+
+function myFunc(){
+	console.log("hello world");
+}
+
+myFunc();  // hello world
+
+Now this myFunc function is added to the window object.
+
+window.myFunc();  // hello world
+
+So, if we say something like this..
+
+function myFunc(){
+	console.log(this);
+}
+
+window.myFunc();  // prints window object
+
+Here myFunc() is called by window object. So this will print window object.
+
+Similarly,
+
+myFunc();  // It will also prints the window object.
+
+
+If we create a function and say console.log(this), it will print the window object.
+This can cause problems for us.
+So, JavaScript developers use strict mode inside the function.
+
+Example:
+
+function myFunc(){
+	"use strict"
+	console.log(this);
+}
+
+Output: undefined
+
+NOTE: "use strict" can also be added at the top of the file. It will work the same way as above.
+
+
+call, apply and bind methods..
+
+// call method..
+
+Any function can be called using .call() method.
+
+Example:
+
+function hello(){
+	console.log("hello world");
+}
+
+hello();  // hello world
+hello.call();  // hello world
+
+
+Example:
+
+const user1 = {
+	firstName: "harshit",
+	age: 8,
+	about: function(){
+		console.log(this.firstName, this.age);
+	}
+};
+
+const user2 = {
+	firstName: "mohit",
+	age: 9,
+};
+
+user1.about();  // harshit 8
+
+Now we want to call about method for user2.
+It means, user2 wants to borrow about method from user1.
+But, only user1 can call the about method.
+So, we can do this using call() method.
+
+user1.about.call(user2);  // mohit 9
+
+Now, It means that for about method, this will refer to user2.
+
+user1.about.call();  // undefined undefined
+
+user1.about.call(user1);  // harshit 8
+
+user1.about();  // harshit 8
+
+Without call method, we can directly use it. But if we are using the call method, then we have to mention this object binding.
+
+Example:
+
+const user1 = {
+	firstName: "harshit",
+	age: 8,
+	about: function(hobby, favMusician){
+		console.log(this.firstName, this.age, hobby, favMusician);
+	}
+};
+
+const user2 = {
+	firstName: "mohit",
+	age: 9,
+};
+
+user1.about.call(user2, "guitar");  // mohit 9 guitar undefined
+
+user1.about.call(user2, "guitar", "mozart");  // mohit 9 guitar mozart
+
+So, in the call method, after passing this binding, we can pass as many arguments as we want.
+
+
+Example:
+
+function about(hobby, favMusician){
+	console.log(this.firstName, this.age, hobby, favMusician);
+}
+
+const user1 = {
+	firstName: "harshit",
+	age: 8,
+};
+
+const user2 = {
+	firstName: "mohit",
+	age: 9,
+};
+
+about.call(user1, "guitar", "mozart");  // harshit 8 guitar mozart
+
+
+// apply method..
+
+apply method is same as call method and internally apply method also uses the call method.
+
+In apply method, instead of passing individual arguments, we can pass an array of arguments.
+
+about.apply(user1, ["guitar", "bach"]);  // harshit 8 guitar bach
+
+
+// bind method..
+bind method returns a function.
+
+const func = about.bind(user1, "guitar", "bach");
+func();  // harshit 8 guitar bach
+
+
+Don't do this mistake..
+
+Example:
+
+const user1 = {
+	firstName: "harshit",
+	age: 8,
+	about: function(){
+		console.log(this.firstName, this.age);
+	}
+};
+
+// don't do this mistake
+
+user1.about();  // harshit 8
+
+const myFunc = user1.about;
+myFunc();  // undefined undefined
+
+It is happening because in case of myFunc, this is representing to the window object not to the user1 object.
+this value is known when the method is called.
+Now in this line,
+
+const myFunc = user1.about();
+
+We are not calling the about method.
+We are doing something like this..
+
+const myFunc = function(){
+	console.log(this.firstName, this.age);
+};
+
+When we will call myFunc() function, then in that case, this will be binding to the window object.
+
+So, to avoid this problem, we have to use bind method.
+
+const myFunc = user1.about.bind(user1);
+myFunc();  // harshit 8
+
+
+// arrow functions
+
+arrow function doesn't have its own this.
+arrow function takes this from its surrounding.
+arrow function's this will be one level up.
+we cannot change the this of arrow function.
+
+Example:
+
+const user1 = {
+	firstName: "harshit",
+	age: 8,
+	about: () => {
+		console.log(this);
+		console.log(this.firstName, this.age);
+	}
+};
+
+user1.about();  // undefined undefined
+// In this case, about function's this will bind to window object.
+
+arrow function's this cannot be changed.
+
+user1.about.call(user1);  // undefined undefined
+// In this case also, this is binding to window object.
+
+
+Short syntax..
+
+const user1 = {
+	firstName: "harshit",
+	age: 8,
+	about: function(){
+		console.log(this.firstName, this.age);
+	}
+};
+
+We don't have to write key value pair for functions.
+We can simply write functions as given below.
+
+const user1 = {
+	firstName: "harshit",
+	age: 8,
+	about(){
+		console.log(this.firstName, this.age);
+	}
+};
+
+user1.about();  // harshit 8
+
+Both the above objects are equivalent.
+
+
+Creating an Object..
+
+Example:
+
+const user = {
+	firstName: "harshit",
+	lastName: "vashistha",
+	email: "harshitvashistha@gmail.com",
+	age: 2,
+	address: "House Number, Colony, pincode, state",
+	about: function(){
+		return `${this.firstName} is ${this.age} years old`;
+	}
+	is18: function(){
+		return this.age >=18;
+	}
+};
+
+const aboutUser = user.about();
+console.log(aboutUser);  // harshit is 2 years old
+
+Now creating various objects using this way is a very tedious task.
+
+
+Creating function to create multiple objects..
+
+Function will take the required data as input and return an object.
+1. function will create an object
+2. add key value pairs
+3. return an object
+
+
+Example:
+
+function createUser(firstName, lastName, email, age, address){
+	const user = {};
+	user.firstName = firstName;
+	user.lastName = lastName;
+	user.email = email;
+	user.age = age;
+	user.address = address;
+	user.about = function(){
+		return `${this.firstName} is ${this.age} years old`;
+	};
+	user.is18 = function(){
+		return this.age >= 18;
+	};
+	
+	return user;
+}
+
+const user1 = createUser('harshit', 'vashistha', 'harshit@gmail.com', 19, 'my address');
+console.log(user1);
+console.log(user1.is18());  // true
+
+Now, problem with this is that, whenever a new user is created, objects functions are also created with that object.
+This will take up a lot of space.
+
+As the functions will remain same for every object.
+So, we can store methods in different object.
+
+
+Storing methods in different object..
+
+Example:
+
+const userMethods = {
+	about : function(){
+		return `${this.firstName} is ${this.age} years old`;
+	}
+	is18 : function(){
+		return this.age >= 18;
+	}
+};
+
+function createUser(firstName, lastName, email, age, address){
+	const user = {};
+	user.firstName = firstName;
+	user.lastName = lastName;
+	user.email = email;
+	user.age = age;
+	user.address = address;
+	
+	user.about = userMethods.about;
+	user.is18 = userMethods.is18;
+	
+	return user;
+}
+
+const user1 = createUser('harshit', 'vashistha', 'harshit@gmail.com', 19, 'my address');
+console.log(user1);
+console.log(user1.about());
+
+Now, in this case, we have created a single copy of methods in a different object and we are assigning the reference of those methods inside the function.
+
+Now, problem with this approach is that, if we added a new function in the userMethods object and we forgot to add it in the function, then this will create a problem.
+
+
+Another Example..
+
+const obj1 = {
+	key1: "value1",
+	key2: "value2"
+};
+
+const obj2 = {
+	key3: "value3"
+};
+
+console.log(obj2.key3);  // value3
+console.log(obj2.key1);  // undefined
+
+Now, we don't want undefined.
+We want what javascript does is if key1 is not present in obj2, then it will automatically search key1 is obj1 and it key1 is present in obj1, it will return its value.
+
+Solution using Object.create()..
+
+Example:
+
+const obj1 = {
+	key1: "value1",
+	key2: "value2"
+};
+
+// there is one more way to create empty object
+
+const obj2 = Object.create(obj1);
+
+console.log(obj2);  // {}
+
+obj2.key3 = "value3";
+
+console.log(obj2.key3);  // value3
+console.log(obj2.key2);  // value2
+
+obj2.key2 = "unique";
+
+console.log(obj2.key2);  // unique
+
+Now the question arises is how Object.create() is doing this..
+
+When we try to print obj2, there will be something as __proto__
+
+Now what JavaScript does is, if it is not able to find something in the actual object, it will search for it in the __proto__.
+
+Now __proto__ contains a reference of something.
+
+Now, in this case, the __proto__ for obj2 is obj1.
+That's how javascript is able to give value of key2 for obj2.
+
+Now, if we talk about the official ECMAScript documentation, they have defined this __proto__ as [[prototype]].
+
+So, __proto__ and [[prototype]] are the same thing.
+But, javascript has  another prototype which is a different thing.
+
+console.log(obj2.__proto__);  // obj1 will be shown
+
+const obj2 = Object.create(obj1);
+// Basically, this line is setting the obj1 in __proto__ property of obj2.
+
+
+So, now we will set the userMethods in __proto__ property of user.
+
+Example:
+
+const userMethods = {
+	about: function(){
+		return `${this.firstName} is ${this.age} years old`;
+	},
+	is18: function(){
+		return this.age >= 18;
+	}
+	sing: function(){
+		return "toon na na ana la la";
+	}
+};
+
+function createUser(firstName, lastName, email, age, address){
+	const user = Object.create(userMethods);
+	user.firstName = firstName;
+	user.lastName = lastName;
+	user.email = email;
+	user.age = age;
+	user.address = address;
+	return user;
+}
+
+const user1 = createUser('harshit', 'vashistha', 'harshit@gmail.com', 18, 'my address');
+
+console.log(user1.about());
+console.log(user1.sing());
+
+Here __proto__ is creating a bond of user and userMethods.
+
+
+Prototype..
+
+JavaScript functions are functions but they can be treated as objects also.
+
+JavaScript function ----> function + object
+
+Using name property, we can find the name of a function..
+
+Example: 
+
+function hello(){
+	console.log("hello world");
+}
+
+console.log(hello.name);  // hello
+
+We can add our own properties to a function.
+
+hello.myOwnProperty = "very unique value";
+
+console.log(hello.myOwnProperty);  // very unique value
+
+
+// name property ----> tells function name
+// function provides more useful properties.
+
+// function provides us call, apply and bind methods.
+
+Functions provides us free space. Actually there is nothing like free space. Here, free space term is used for empty object {}. And that object is called as prototype.
+
+prototype is like an object given by a function which can be used for adding key value pairs.
+
+console.log(hello.prototype);  // {constructor: f}
+
+There is only a single property inside prototype object which is constructor and the value of it is the same function whose prototype we have used.
+
+Only functions provides the prototype property.
+
+Example:
+
+function hello(){
+	console.log("hello world");
+}
+
+if(hello.prototype){
+	console.log("Prototype is present");
+}
+else{
+	console.log("Prototype is not present");
+}
+
+Output: Prototype is present
+
+
+const hello = {key1: "value1"};
+
+if(hello.prototype){
+	console.log("Prototype is present");
+}
+else{
+	console.log("Prototype is not present");
+}
+
+Output: Prototype is not present
+
+
+Example:
+
+function hello(){
+	console.log("hello world");
+}
+
+hello.prototype.abc = "abc";
+hello.prototype.xyz = "xyz";
+hello.prototype.sing = function(){
+	return "lalalala";
+};
+
+console.log(hello.prototype);  // {abc: "abc", xyz: "xyz", sing: f, constructor: f}
+
+console.log(hello.prototype.sing());  // lalalala
+
+
+Now previously, we are creating another object called userMethods for storing the methods.
+We know that functions have a property called prototype which is like an object provided by function.
+So, instead of creating a new object for storing methods, we can store those methods in the prototype of the function, means in the object that is provided by the function.
+
+Example:
+
+function createUser(firstName, lastName, email, age, address){
+	const user = Object.create(createUser.prototype);
+	user.firstName = firstName;
+	user.lastName = lastName;
+	user.email = email;
+	user.age = age;
+	user.address = address;
+	return user;
+}
+
+createUser.prototype.about = function(){
+	return `${this.firstName} is ${this.age} years old.`;
+}
+createUser.prototype.is18 = function(){
+	return this.age >= 18;
+}
+createUser.prototype.sing = function(){
+	return "la la la la";
+}
+
+const user1 = createUser('harshit', 'vashistha', 'harshit@gmail.com', 18, 'my address');
+
+console.log(user1);
+console.log(user1.about());
+
+
+New keyword..
+
+Example:
+
+function createUser(firstName, age){
+	this.firstName = firstName;
+	this.age = age;
+}
+
+createUser.prototype.about = function(){
+	console.log(this.firstName, this.age);
+}
+
+const user1 = new createUser("harshit", 6);
+
+console.log(user1);
+
+Here new keyword is doing three things on its own..
+1. creating an empty object, to which this is referring.
+2. returning that object.
+3. creating the bond automatically between the function __proto__ and prototype which is done by using Object.create().
+
+user1.about();  // harshit 6
+
+
+Improvising our previous code with new keyword..
+
+Example:
+
+// This is called as constructor function because it is creating an object for us.
+
+function CreateUser(firstName, lastName, email, age, address){
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.email = email;
+	this.age = age;
+	this.address = address;
+}
+
+CreateUser.prototype.about = function(){
+	return `${this.firstName} is ${this.age} years old.`;
+}
+CreateUser.prototype.is18 = function(){
+	return this.age >= 18;
+}
+CreateUser.prototype.sing = function(){
+	return "la la la la";
+}
+
+const user1 = new CreateUser('harshit', 'vashistha', 'harshit@gmail.com', 19, 'my address');
+
+console.log(user1);
+console.log(user1.is18());
+
+
+Now suppose, we have created a JavaScript library using constructor function, then how the user would know that we have to call this constructor function using new keyword.
+So, there is a convention that if we want to call something using new keyword, then that thing should start with a capital letter.
+
+Now if we want to print all the keys related to user1, we can use..
+
+for(let key in user1){
+	console.log(key);
+}
+
+Output:
+firstName
+lastName
+email
+age
+address
+about
+is18
+sing
+
+Now, it is also showing the keys from prototype also.
+But if we want to not show the properties of prototype, we can use hasOwnProperty method..
+
+for(let key in user1){
+	if(user1.hasOwnProperty(key)){
+		console.log(key);
+	}
+}
+
+Output:
+firstName
+lastName
+email
+age
+address
+
+
+More about Prototypes..
+
+let numbers = [1, 2, 3];
+
+When we do something like numbers. then there are various methods which JavaScript show to us. These methods are not present in our array.
+JavaScript is getting all these methods from prototype.
+But this is an array and we said that prototype can only be of functions or constructor functions.
+So, internally when JavaScript creates an array, it calls the Array constructor using new keyword.
+
+let numbers = new Array(1, 2, 3);
+
+Now this Array() constructor function has all the methods related to an array in its prototype.
+
+console.log(Array.prototype);  // It contains all those methods related to an array.
+
+So, now you know how these methods are accessed.
+
+Now, we create arrays like this because it is a short syntax.
+But internally Array constructor function is used.
+
+let numbers = [1, 2, 3];
+
+Accessing its prototype..
+
+First method is we can print is using..
+console.log(Array.prototype);
+
+Second we can use something like this..
+
+console.log(Object.getPrototypeOf(numbers));
+// This will be something like an array [...]
+
+But we said that, prototype is an object.
+So, in JavaScript, Arrays are also objects.
+
+console.log(Array.isArray(Array.prototype));  // true
+
+By default, the prototypes are Objects like this {}.
+But we can change them also.
+
+Example:
+
+function hello(){
+	console.log("hello");
+}
+console.log(hello.prototype);  // {...}
+
+hello.prototype = [];
+
+console.log(hello.prototype);  // []
+
+hello.prototype.push('1');
+
+console.log(hello.prototype);  // ["1"]
+
+
+Class Keyword..
+
+In JavaScript, classes are introduced in ES6.
+
+Example:
+
+class CreateUser{
+	constructor(firstName, lastName, email, age, address){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.age = age;
+		this.address = address;
+	}
+	
+	about(){
+		return `${this.firstName} is ${this.age} years old.`;
+	}
+	is18(){
+		return this.age >= 18;
+	}
+	sing(){
+		return "la la la la";
+	}
+}
+
+const user1 = new CreateUser('harshit', 'vashistha', 'harshit@gmail.com', 19, 'my address');
+
+console.log(user1.firstName);  // harshit
+console.log(user1.sing());  // la la la la
+
+console.log(Object.getPrototypeOf(user1));
+
+When we call the class using new keyword, automatically constructor is called and object will be created and all those methods will be added in the prototype.
+
+Without new keyword, we cannot invoke the class constructor.
+
+
+Class practice and extends keyword..
+
+Example:
+
+class Animal {
+	constructor(name, age){
+		this.name = name;
+		this.age = age;
+	}
+	
+	eat(){
+		return `${this.name} is eating`;
+	}
+	
+	isSuperCute(){
+		return this.age <= 1;
+	}
+	
+	isCute(){
+		return true;
+	}
+}
+
+const animal1 = new Animal("tom", 1);
+console.log(animal1);
+console.log(animal1.eat());
+console.log(animal1.isSuperCute());
+
+Example..
+
+class Dog extends Animal {
+	
+}
+
+const tommy = new Dog("tommy", 3);
+console.log(tommy);
+console.log(tommy.isCute());
+
+Here we are calling the constructor of Dog class.
+But it doesn't have any constructor.
+So, it will call the constructor of Animal class.
+
+NOTE: Object and instance are the same thing.
+
+
+super keyword..
+
+Example:
+
+class Dog extends Animal {
+	constructor(name, age, speed){
+		super(name, age);
+		this.speed = speed;
+	}
+	
+	run(){
+		return `${this.name} is running at ${this.speed} kmph.`;
+	}
+}
+
+const tommy = new Dog("tommy", 3, 45);
+console.log(tommy);
+console.log(tommy.run());
+
+
+Same method in base class..
+
+Example:
+
+class Dog extends Animal {
+	constructor(name, age, speed){
+		super(name, age);
+		this.speed = speed;
+	}
+	
+	eat(){
+		return `Modified Eat : ${this.name} is eating`;
+	}
+	
+	run(){
+		return `${this.name} is running at ${this.speed} kmph.`;
+	}
+}
+
+const tommy = new Dog("tommy", 3, 45);
+console.log(tommy.run());
+console.log(tommy.eat());  // Modified Eat: tommy is eating
+
+
+getters and setters..
+
+Example:
+
+class Person{
+	constructor(firstName, lastName, age){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+	
+	fullName(){
+		return `${this.firstName} ${this.lastName}`;
+	}
+}
+
+const person1 = new Person("harshit", "sharma", 5);
+
+console.log(person1.firstName);  // harshit
+
+console.log(person1.fullName());  // harshit sharma
+
+
+Now we want to access fullName as a property like this without parentheses.
+
+console.log(person1.fullName);  // harshit sharma
+
+So, for this we can use getters and setters
+
+Example:
+
+class Person{
+	constructor(firstName, lastName, age){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+	
+	get fullName(){
+		return `${this.firstName} ${this.lastName}`;
+	}
+	
+	setName(firstName, lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+}
+
+const person1 = new Person("harshit", "sharma", 5);
+
+console.log(person1.fullName);  // harshit sharma
+console.log(person1.fullName());  // Error
+
+first way of changing name..
+
+person1.setName("mohit", "vashistha");
+
+second way of changing name..
+
+person1.firstName = "mohit";
+person1.lastName = "vashistha";
+
+
+third way of changing name..
+
+Example:
+
+class Person{
+	constructor(firstName, lastName, age){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+	
+	get fullName(){
+		return `${this.firstName} ${this.lastName}`;
+	}
+	
+	set fullName(fullName){
+		const [firstName, lastName] = fullName.split(" ");
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+}
+
+const person1 = new Person("harshit", "sharma", 5);
+
+person1.fullName = "mohit vashistha";
+console.log(person1.fullName);  // mohit vashistha
+
+
+Static methods and properties..
+
+All those methods like fullName(), eat(), isCute(), etc. all are related to the object or instance.
+It means they can only be called using an instance.
+
+We can also create those methods which are directly related to class.
+For calling them, we do not have to create an object.
+
+Example:
+
+class Person{
+	constructor(firstName, lastName, age){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+	
+	static desc = "This is a static property";
+	
+	static classInfo(){
+		return "this is person class";
+	}
+}
+
+const person1 = new Person("harshit", "sharma", 6);
+
+person1.classInfo();  // Error
+
+console.log(Person.classInfo());
+
+console.log(Person.desc);
+console.log(person1.desc);  // undefined
+
+
+
+--------------------------- Completed ------------------------------

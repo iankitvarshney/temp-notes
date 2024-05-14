@@ -17,6 +17,8 @@ It plays a vital role in process creation, termination, and resource allocation.
 
 for listing pid and ppid of processes:
 ps -axjf
+ps -e -o pid,ppid
+ps -o pid,ppid -C chrome
 
 
 for listing browser's pid and ppid:
