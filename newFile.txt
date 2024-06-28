@@ -1,0 +1,519 @@
+Let's Build Our Store:
+
+
+
+
+Handling the data for a production ready big large scale application is very important and it becomes very critical.
+For that, a lot of companies use a library which is known as Redux.
+
+We need Redux to manage our Data layer of the application.
+
+We used context to avoid Props Drilling.
+
+Any component in our app can access the Context.
+Any component in our app can modify the Context.
+
+We can keep context for a lot of things.
+
+Data which we can keep in context is : 
+- Logged in user information 
+- Theme (Light / Dark theme) 
+
+Cart can use context.
+Wishlist can use context.
+
+But to manage our data properly, we can also use something which is known as Redux.
+
+Instead of creating different contexts, we can create a Redux Store.
+
+Redux is used for Data Management.
+But there were major issues with using Redux.
+
+When to use Context and when to use Redux ?
+
+When we are building a small application, using Context is okay.
+But when our application grows, in this case Redux gives us a proper way of handling, managing, modifying and reading the data.
+
+The major problem with Redux is that it is very complex to setup.
+It has a huge learning curve.
+
+Redux has its own importance.
+Only use it when we are building a large scale big application which involves a lot of data handling.
+
+There was a lot of complexity when we write Redux and it was difficult to understand.
+That's why Redux has come up with something known as Redux Toolkit.
+This is a new way of doing Redux.
+
+The Redux Toolkit package is intended to be the standard way to write Redux logic.
+It was originally created to help address three common concerns about Redux.
+
+- Configuring a Redux store is too complicated.
+- I have to add a lot of packages to get Redux to do anything useful.
+- Redux requires too much boilerplate code.
+
+
+What is Redux Store ?
+
+At the end of the day, Redux Store is like a big all object.
+A big object which will have different sections.
+Those sections are small pieces.
+
+All the components will be able to access the Redux Store.
+It is basically like a different store altogether.
+
+Redux Store is a separate entity out of the application.
+Our Web app is different and Store is different.
+
+Should we have multiple stores in our app ?
+
+In Redux, we will have a single store for holding everything.
+
+We will store the data of these things inside our Redux Store.
+- Data about logged in user 
+- Cart items 
+- Theme information 
+- Authentication information 
+
+We will create logical separation into our store.
+We will create slices of our store.
+
+What all slices can our app have ?
+- User slice 
+- Authentication slice 
+- Theme slice 
+- Cart slice 
+
+We can have multiple such slices.
+
+A slice is a small portion of our store.
+
+Our components cannot directly modify the store.
+We will have to dispatch an action.
+
+Suppose we have add(+) button inside our menu list.
+
+When we click on the add(+) button, it will dispatch an action which is addItem.
+This action is known as addItem, we can give any name we want to.
+
+This action will call a function.
+This function is a normal JS function.
+And this function will modify the slice of our Store (for example, cart)
+
+(+) --> Dispatch Action (addItem) --> ()=>{} --> Modify the Slice of Store 
+
+If we click on the (+) button, it will dispatch an action, which will call a function, which will modify our Cart.
+
+We cannot directly modify our Cart.
+
+Why can't we directly modify the Store ?
+
+When there exists a large application, we don't want random components to randomly modify our Store.
+We need to keep a track of everything.
+This is a full fledged better way of handling the data.
+
+In a microservice architecture also, every piece has its own responsibility.
+There is a separation of concern.
+It is also modular.
+
+Similarly, this is also an architecture of Redux of how Redux works.
+
+Now, above we have a function, ()=>{}
+This function is known as Reducer.
+
+When we click on the (+) button, it will dispatch an action, which calls a reducer function, which updates the slice of our Redux Store.
+
+
+There is something known as Selector.
+If we want to read Cart, we have to call the Selector.
+This Selector will give us the information that will update the Cart.
+
+Selector means we are selecting the portion of the store.
+We use Selector to read data.
+
+Take the whole diagram at 54 minutes 21 seconds.
+
+Selector is a Hook.
+There is a hook which is known as useSelector.
+And hook is a function at the end of the day.
+
+When we use Selector hook, it is known as Subscribing to the Store.
+
+The Cart component has subscribed to the Store.
+It means that the Cart component is reading something from the Store.
+It is like in sync with the Store.
+Whenever the Store will modify, our Cart component will automatically modify.
+
+
+To install Redux Toolkit library, use the below command.
+
+npm install @reduxjs/toolkit 
+
+We will install one more library.
+
+npm install react-redux 
+
+The first library is the core of Redux.
+The second library is a bridge between the Redux and React.
+
+
+Let's create a file store.js inside utils folder.
+
+Ex: store.js 
+
+import { configureStore } from "@reduxjs/toolkit";
+
+const store = configureStore({});
+
+export default store;
+
+
+Now, we will need a Provider to provide our store to the application.
+Now, we can put this Provider into our whole app or to certain portion of our app also.
+
+Here, we will give this Provider to our whole application.
+
+Ex: App.js 
+
+import {Provider} from "react-redux";
+import store from "./utils/store";
+
+const AppLayout = () => {
+
+  return (
+    <Provider store={store}>
+      ...
+    </Provider>
+  );
+
+};
+
+
+NOTE: 
+RTK is a short-form of Redux Toolkit.
+
+We can create slices in store.js itself and we can also create our slices in new files.
+
+Now let's create a slice which is known as cartSlice inside the utils folder.
+
+
+We will have an initialState for our cart.
+initialState means the initial value of the cart when we initialize.
+
+Now, we will modify our cart by creating a reducer function.
+
+These reducer functions are called on the dispatch of an action.
+
+addItem: () => {}
+
+So, here addItem is an action and the value of addItem is a reducer function.
+
+The reducer function takes in two things.
+- First thing is the state. 
+- Other thing is the action payload. 
+
+Here state is the initialState.
+And action is the place where we will get the items which we will have to add to our cart.
+
+The action is the data which is coming in.
+
+On click of the add button, we will dispatch an action.
+In that we will pass some data which we will receive here using action.payload 
+
+Reducer function does not returns anything.
+It takes a state and directly modifies it.
+
+Please be careful and don't return anything from this reducer function.
+
+Our components needs to access this slice.
+So, we will export the actions and reducers from this slice.
+
+export default cartSlice.reducer;
+
+It will combine all the reducers and then create one reducer and export it.
+
+Now we will also have to export the actions.
+
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
+
+
+Roughly, behind the scenes, Redux would be maintaining the cartSlice something like this.
+
+The cartSlice is like a big object.
+
+cartSlice = {
+  actions: {
+    addItem,
+    removeItem,
+    clearCart,
+  },
+  reducer: reducers,
+}
+
+
+Ex: cartSlice.js 
+
+import {createSlice} from "@reduxjs/toolkit";
+
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState: {
+    items: [],
+  },
+  reducers: {
+    addItem: (state, action) => {
+      state.items.push(action.payload);
+    },
+    removeItem: (state, action) => {
+      state.items.pop();
+    },
+    clearCart: (state) => {
+      state.items = [];
+    },
+  },
+});
+
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
+
+export default cartSlice.reducer;
+
+
+Now our store doesn't know about this cartSlice.
+This slice should be put inside store also.
+
+cartSlice is exporting all the reducers by default.
+
+
+Ex: store.js 
+
+import { configureStore } from "@reduxjs/toolkit";
+import cartSlice from "./cartSlice";
+
+const store = configureStore({
+  reducer: {
+    cart: cartSlice,
+  },
+});
+
+export default store;
+
+
+cart: cartSlice,
+
+cart --> Name of the slice 
+cartSlice --> The slice 
+
+If we are having more than one slice, we will be doing something like this.
+
+reducer: {
+  cart: cartSlice,
+  user: userSlice,
+}
+
+Now we will subscribe to the store using useSelector hook.
+
+This useSelector hook will give us the access to the store.
+
+
+Ex: Header.js 
+
+import { useSelector } from "react-redux";
+
+const Header = () => {
+
+  const cartItems = useSelector(store => store.cart.items);
+
+  return (
+    <div>
+      <li>Cart - {cartItems.length} items</li>
+    </div>
+  );
+
+};
+
+
+Now, we will learn to dispatch an action.
+
+
+Ex: RestaurantMenu.js 
+
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
+
+const RestaurantMenu = () => {
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = () => {
+
+    dispatch(addItem("Grapes"));
+
+  };
+
+  return (
+    <div>
+      <button 
+        className="p-2 m-5 bg-green-100"
+        onClick={() => handleAddItem()}
+      >
+        Add Item
+      </button>
+    </div>
+  );
+
+};
+
+
+Ex: RestaurantMenu.js 
+
+const RestaurantMenu = () => {
+
+  const addFoodItem = (item) => {
+    dispatch(addItem(item));
+  };
+
+  return (
+
+    <ul>
+      {Object.values(restaurant?.menu?.items).map((item) => (
+        <li key={item.id}>
+          {item.name} - 
+          <button 
+            className="p-1 bg-green-50" 
+            onClick={() => addFoodItem(item)}
+          >
+            Add
+          </button>
+        </li>
+      ))}
+    </ul>
+
+  );
+
+};
+
+
+Now, we will build our cart page.
+
+
+Header.js 
+
+<Link to="/cart">
+  <li className="px-2">Cart - {cartItems.length} items</li>
+</Link>
+
+
+App.js 
+
+{
+  path: "/cart",
+  element: <Cart />,
+}
+
+
+NOTE:
+
+useSelector is used to subscribe to the store.
+This is the place where we will tell what this component is subscribing to.
+
+useSelector(store => store);  // It is subscribing to the whole store.
+
+useSelector(store => store.cart);  // It is subscribing to the cart slice.
+
+useSelector(store => store.cart.items);  // It is subscribing to only the items array.
+
+This is where most people make performance mistakes.
+
+const store = useSelector(store => store);
+
+Why is this a major important performance issue ?
+
+In this case, the Cart component is subscribing to the whole store.
+Now, everytime the Store changes, our Cart component will also change.
+It will re-render the Cart component.
+
+Now, if we are subscribing to the whole store, everytime the store changes, it will re-render the Cart component.
+
+In a large scale production ready app, the Store is huge.
+It has so many slices and so much data.
+
+Do we want this Cart component to re-render every time if anything changes in our Store ?
+
+No.
+Its illogical to do.
+
+We only have to subscribe to the specific portion of the store.
+
+const cartItems = useSelector(store => store.cart.items);
+
+If we do this, it will make a major performance improvement.
+
+
+Cart.js 
+
+import { useDispatch, useSelector } from "react-redux";
+import FoodItem from "./FoodItem";
+import {clearCart} from "../utils/cartSlice";
+
+const Cart = () => {
+
+  const cartItems = useSelector((store) => store.cart.items);
+
+  const dispatch = useDispatch();
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
+  return (
+    <div>
+      <h1 className="font-bold text-3xl">Cart Items - {cartItems.length}</h1>
+      <button 
+        className="bg-green-100 p-2 m-5"
+        onClick={() => handleClearCart()}
+      >
+        Clear Cart
+      </button>
+      <div className="flex">
+        {cartItems.map((item) => (
+          <FoodItem key={item.id} {...item} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Cart;
+
+
+Ex: FoodItem.js 
+
+import { IMG_CDN_URL } from "../constants";
+
+const FoodItem = ({ name, description, cloudinaryImageId, price}) => {
+  return (
+    <div>
+      <img src={IMG_CDN_URL + cloudinaryImageId} />
+      <h2>{name}</h2>
+      <h3>{description}</h3>
+      <h4>Rupees: {price / 100}</h4>
+    </div>
+  );
+};
+
+export default FoodItem;
+
+
+NOTE:
+Read the Redux Toolkit documentation.
+Read about Middleware.
+Read about Thunks.
+Read about RTK Query.
+
+There is something known as Redux Dev Tools Chrome Extension.
+
+Check out Redux Dev Tools.
+
+
+
+
+--------------------------------------- Completed --------------------------------
